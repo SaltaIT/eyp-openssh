@@ -1,0 +1,4 @@
+class openssh inherits params {
+
+
+}
