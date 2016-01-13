@@ -2,7 +2,7 @@
   "name": "eyp-openssh",
   "version": "0.1.4",
   "author": "eyp",
-  "summary": null,
+  "summary": "basic openssh client and server setup",
   "license": "Apache-2.0",
   "source": "basic openssh client / server configuration, useful for eyp-sssd",
   "project_page": null,
