@@ -2,6 +2,7 @@ class openssh::server (
                         $permitrootlogin='yes',
                         $usedns='no',
                         $enableldapsshkeys=false,
+                        $banner=undef,
                       )inherits params {
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
