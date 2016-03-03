@@ -1,6 +1,6 @@
 # class openssh::server
 #
-# concats
+# = concat order
 # 00 - baseconf
 # (...)
 # 80 - AllowUser
