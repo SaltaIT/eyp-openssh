@@ -1,11 +1,11 @@
 # class openssh::server
 #
-# concats
+# = concat order
 # 00 - baseconf
 # (...)
-# 90 - AllowUser
-# 91 - AllowUser list
-# 92 - AllowUser intro
+# 80 - AllowUser
+# 81 - AllowUser list
+# 82 - AllowUser intro
 # (...)
 # 90 - DenyUser
 # 91 - DenyUser list
@@ -45,8 +45,8 @@ class openssh::server (
   if($enableldapsshkeys)
   {
     exec { 'check presence /usr/libexec/openssh/ssh-ldap-wrapper':
-      command => '/bin/true',
-      onlyif  => '/usr/bin/test -e /usr/libexec/openssh/ssh-ldap-wrapper',
+      command => '/bin/false',
+      unless  => '/usr/bin/test -e /usr/libexec/openssh/ssh-ldap-wrapper',
       before  => File[$openssh::params::sshd_config],
     }
   }

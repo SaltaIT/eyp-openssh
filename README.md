@@ -58,9 +58,9 @@ the fancy stuff with your module here.
 
 ## Reference
 
-The allow/deny directives are processed in the following order:
-DenyUsers, AllowUsers, DenyGroups, and finally AllowGroups.
-
+### openssh::server
+* **allowusers**: (order: DenyUsers, AllowUsers, default: undef)
+* **denyusers**: (order: DenyUsers, AllowUsers, default: undef)
 
 ## Limitations
 
