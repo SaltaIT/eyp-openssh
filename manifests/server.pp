@@ -18,6 +18,10 @@ class openssh::server (
                         $banner=undef,
                         $allowusers=undef,
                         $denyusers=undef,
+                        $ensure ='running',
+                        $manage_service=true,
+                        $manage_docker_service=true,
+                        $enable =true,
                       )inherits params {
 
   validate_array($allowusers)
@@ -31,7 +35,7 @@ class openssh::server (
     ensure => 'installed',
   }
 
-  if ! defined(Package[$openssh::params::package_sftp])
+  if ($openssh::params::package_sftp!=undef)
   {
     package { $openssh::params::package_sftp:
       ensure => 'installed',
@@ -40,7 +44,7 @@ class openssh::server (
 
   if($enableldapsshkeys)
   {
-    exec { "check presence /usr/libexec/openssh/ssh-ldap-wrapper":
+    exec { 'check presence /usr/libexec/openssh/ssh-ldap-wrapper':
       command => '/bin/true',
       onlyif  => '/usr/bin/test -e /usr/libexec/openssh/ssh-ldap-wrapper',
       before  => File[$openssh::params::sshd_config],
@@ -61,7 +65,7 @@ class openssh::server (
                   Exec['keygen rsa key'],
                   Package[ [ $openssh::params::package_sshd, $openssh::params::package_sftp ] ],
               ],
-    notify  => Service[$sshd_service],
+    notify  => Class['openssh::service'],
   }
 
   concat::fragment { "${openssh::params::sshd_config} base conf":
@@ -70,9 +74,11 @@ class openssh::server (
     content => template("${module_name}/${openssh::params::sshd_config_template}"),
   }
 
-  service { $sshd_service:
-    ensure => 'running',
-    enable => true,
+  class { 'openssh::service':
+    ensure                => $ensure,
+    manage_service        => $manage_service,
+    manage_docker_service => $manage_docker_service,
+    enable                => $enable,
   }
 
   if($denyusers!=undef)

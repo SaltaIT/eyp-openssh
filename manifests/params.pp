@@ -14,11 +14,11 @@ class openssh::params {
         /^6.*$/:
         {
           $sftp_server='/usr/libexec/openssh/sftp-server'
-          $package_sftp='openssh-server'
+          $package_sftp=undef
 
           $sshd_service='sshd'
         }
-        default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
+        default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
     }
     'Debian':
@@ -36,13 +36,13 @@ class openssh::params {
 
               $sshd_service='ssh'
             }
-            default: { fail("Unsupported Ubuntu version! - $::operatingsystemrelease")  }
+            default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }
-        'Debian': { fail("Unsupported")  }
-        default: { fail("Unsupported Debian flavour!")  }
+        'Debian': { fail('Unsupported')  }
+        default: { fail('Unsupported Debian flavour!')  }
       }
     }
-    default: { fail("Unsupported OS!")  }
+    default: { fail('Unsupported OS!')  }
   }
 }
