@@ -12,9 +12,14 @@
 # 92 - DenyUser intro
 #
 class openssh::server (
-                        $permitrootlogin='yes',
-                        $usedns='no',
+                        $permitrootlogin=true,
+                        $usedns=false,
+                        $usepam=true,
+                        $x11forwarding=true,
+                        $passwordauth=true,
+                        $permitemptypasswords=false,
                         $enableldapsshkeys=false,
+                        $syslogfacility=$openssh::params::syslogfacility_default,
                         $banner=undef,
                         $allowusers=undef,
                         $denyusers=undef,

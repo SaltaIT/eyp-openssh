@@ -17,6 +17,8 @@ class openssh::params {
           $package_sftp=undef
 
           $sshd_service='sshd'
+
+          $syslogfacility_default='AUTHPRIV'
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -35,6 +37,8 @@ class openssh::params {
               $package_sftp='openssh-sftp-server'
 
               $sshd_service='ssh'
+
+              $syslogfacility_default='AUTH'
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
