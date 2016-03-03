@@ -124,9 +124,12 @@ UseDNS <%= @usedns %>
 #PermitTunnel no
 #ChrootDirectory none
 
+<% if defined?(@banner) -%>
+Banner <%= @banner %>
+<% else -%>
 # no default banner path
-#Banner none
-
+Banner none
+<% end -%>
 # override default of no subsystems
 Subsystem	sftp	<%= scope.lookupvar('openssh::params::sftp_server') %>
 

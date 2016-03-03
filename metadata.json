@@ -1,14 +1,15 @@
 {
   "name": "eyp-openssh",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "author": "eyp",
   "summary": "basic openssh client and server setup",
   "license": "Apache-2.0",
-  "source": "basic openssh client / server configuration, useful for eyp-sssd",
+  "source": "basic openssh client / server configuration",
   "project_page": null,
   "issues_url": null,
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0"},
+    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"}
   ],
   "operatingsystem_support": [
     {
@@ -17,7 +18,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04", "14.10" ]
+      "operatingsystemrelease": [ "14.04" ]
     }
   ]
 }
