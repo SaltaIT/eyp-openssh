@@ -10,7 +10,7 @@ define openssh::denyuser($username=$name) {
     concat::fragment { "${openssh::params::sshd_config} denyuser base":
       target  => $openssh::params::sshd_config,
       order   => '90',
-      content => template("${module_name}/denyuser.erb"),
+      content => 'DenyUsers ',
     }
 
     concat::fragment { "${openssh::params::sshd_config} denyuser intro":
