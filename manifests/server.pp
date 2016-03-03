@@ -2,6 +2,11 @@
 #
 # concats
 # 00 - baseconf
+# (...)
+# 90 - AllowUser
+# 91 - AllowUser list
+# 92 - AllowUser intro
+# (...)
 # 90 - DenyUser
 # 91 - DenyUser list
 # 92 - DenyUser intro
@@ -11,9 +16,13 @@ class openssh::server (
                         $usedns='no',
                         $enableldapsshkeys=false,
                         $banner=undef,
-                        $denyuser=undef,
-                        $allowuser=undef,
+                        $allowusers=undef,
+                        $denyusers=undef,
                       )inherits params {
+
+  validate_array($allowusers)
+  validate_array($denyusers)
+
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
@@ -66,9 +75,15 @@ class openssh::server (
     enable => true,
   }
 
-  if($denyuser!=undef)
+  if($denyusers!=undef)
   {
-    openssh::denyuser { $denyuser:
+    openssh::denyuser { $denyusers:
+    }
+  }
+
+  if($allowusers!=undef)
+  {
+    openssh::allowuser { $allowusers:
     }
   }
 
