@@ -3,9 +3,9 @@
 # concats
 # 00 - baseconf
 # (...)
-# 90 - AllowUser
-# 91 - AllowUser list
-# 92 - AllowUser intro
+# 80 - AllowUser
+# 81 - AllowUser list
+# 82 - AllowUser intro
 # (...)
 # 90 - DenyUser
 # 91 - DenyUser list
