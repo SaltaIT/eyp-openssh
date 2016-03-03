@@ -11,6 +11,8 @@ class openssh::server (
                         $usedns='no',
                         $enableldapsshkeys=false,
                         $banner=undef,
+                        $denyuser=undef,
+                        $allowuser=undef,
                       )inherits params {
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
@@ -62,6 +64,12 @@ class openssh::server (
   service { $sshd_service:
     ensure => 'running',
     enable => true,
+  }
+
+  if($denyuser!=undef)
+  {
+    openssh::denyuser { $denyuser:
+    }
   }
 
 }

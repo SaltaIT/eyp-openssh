@@ -58,10 +58,9 @@ the fancy stuff with your module here.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+The allow/deny directives are processed in the following order:
+DenyUsers, AllowUsers, DenyGroups, and finally AllowGroups.
+
 
 ## Limitations
 
