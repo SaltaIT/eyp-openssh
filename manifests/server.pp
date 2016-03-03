@@ -12,6 +12,7 @@
 # 92 - DenyUser intro
 #
 class openssh::server (
+                        $port='22',
                         $permitrootlogin=true,
                         $usedns=false,
                         $usepam=true,
