@@ -45,7 +45,7 @@ class openssh::server (
   if($enableldapsshkeys)
   {
     exec { 'check presence /usr/libexec/openssh/ssh-ldap-wrapper':
-      command => '/bin/true',
+      command => '/bin/false',
       onlyif  => '/usr/bin/test -e /usr/libexec/openssh/ssh-ldap-wrapper',
       before  => File[$openssh::params::sshd_config],
     }
