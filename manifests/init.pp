@@ -1,4 +1,4 @@
-class openssh inherits params {
+class openssh inherits openssh::params {
 
 
 }
