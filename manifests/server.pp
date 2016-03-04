@@ -13,7 +13,7 @@
 #
 class openssh::server (
                         $port                  = '22',
-                        $permitrootlogin       = "no",
+                        $permitrootlogin       = 'no',
                         $usedns                = false,
                         $usepam                = true,
                         $x11forwarding         = true,
