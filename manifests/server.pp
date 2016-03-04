@@ -12,22 +12,22 @@
 # 92 - DenyUser intro
 #
 class openssh::server (
-                        $port='22',
-                        $permitrootlogin=true,
-                        $usedns=false,
-                        $usepam=true,
-                        $x11forwarding=true,
-                        $passwordauth=true,
-                        $permitemptypasswords=false,
-                        $enableldapsshkeys=false,
-                        $syslogfacility=$openssh::params::syslogfacility_default,
-                        $banner=undef,
-                        $allowusers=undef,
-                        $denyusers=undef,
-                        $ensure ='running',
-                        $manage_service=true,
-                        $manage_docker_service=true,
-                        $enable =true,
+                        $port                  = '22',
+                        $permitrootlogin       = true,
+                        $usedns                = false,
+                        $usepam                = true,
+                        $x11forwarding         = true,
+                        $passwordauth          = true,
+                        $permitemptypasswords  = false,
+                        $enableldapsshkeys     = false,
+                        $syslogfacility        = $openssh::params::syslogfacility_default,
+                        $banner                = undef,
+                        $allowusers            = undef,
+                        $denyusers             = undef,
+                        $ensure                = 'running',
+                        $manage_service        = true,
+                        $manage_docker_service = true,
+                        $enable                = true,
                       )inherits openssh::params {
 
   validate_array($allowusers)
