@@ -13,6 +13,7 @@ class openssh::params {
       {
         /^6.*$/:
         {
+
           $sftp_server='/usr/libexec/openssh/sftp-server'
           $package_sftp=undef
 

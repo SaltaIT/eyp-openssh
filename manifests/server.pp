@@ -13,7 +13,7 @@
 #
 class openssh::server (
                         $port                  = '22',
-                        $permitrootlogin       = true,
+                        $permitrootlogin       = "no",
                         $usedns                = false,
                         $usepam                = true,
                         $x11forwarding         = true,
@@ -30,8 +30,15 @@ class openssh::server (
                         $enable                = true,
                       )inherits openssh::params {
 
-  validate_array($allowusers)
-  validate_array($denyusers)
+  if($allowusers!=undef)
+  {
+    validate_array($allowusers)
+  }
+
+  if($denyusers!=undef)
+  {
+    validate_array($denyusers)
+  }
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
@@ -46,6 +53,12 @@ class openssh::server (
     package { $openssh::params::package_sftp:
       ensure => 'installed',
     }
+
+    $require_packages=Package[ [ $openssh::params::package_sshd, $openssh::params::package_sftp ] ]
+  }
+  else
+  {
+    $require_packages=Package[$openssh::params::package_sshd]
   }
 
   if($enableldapsshkeys)
@@ -69,7 +82,7 @@ class openssh::server (
     mode    => '0600',
     require => [
                   Exec['keygen rsa key'],
-                  Package[ [ $openssh::params::package_sshd, $openssh::params::package_sftp ] ],
+                  $require_packages,
               ],
     notify  => Class['openssh::service'],
   }
