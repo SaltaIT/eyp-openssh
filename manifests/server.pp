@@ -28,7 +28,7 @@ class openssh::server (
                         $manage_service=true,
                         $manage_docker_service=true,
                         $enable =true,
-                      )inherits params {
+                      )inherits openssh::params {
 
   validate_array($allowusers)
   validate_array($denyusers)
