@@ -14,7 +14,7 @@
 # possible, but leave them commented.  Uncommented options change a
 # default value.
 
-#Port 22
+Port <%= @port %>
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -36,8 +36,7 @@ HostKey /etc/ssh/ssh_host_rsa_key
 
 # Logging
 # obsoletes QuietMode and FascistLogging
-#SyslogFacility AUTH
-SyslogFacility AUTHPRIV
+SyslogFacility <%= @syslogfacility %>
 #LogLevel INFO
 
 # Authentication:
@@ -65,8 +64,8 @@ PermitRootLogin <%= @permitrootlogin %>
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication yes
-#PermitEmptyPasswords no
+PasswordAuthentication <%= scope.function_bool2yesno([@passwordauth]) %>
+PermitEmptyPasswords <%= scope.function_bool2yesno([@permitemptypasswords]) %>
 
 # Change to no to disable s/key passwords
 ChallengeResponseAuthentication no
@@ -93,8 +92,7 @@ GSSAPICleanupCredentials yes
 # If you just want the PAM account and session checks to run without
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
-#UsePAM no
-UsePAM yes
+UsePAM <%= scope.function_bool2yesno([@usepam]) %>
 
 # Accept locale-related environment variables
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
@@ -105,7 +103,7 @@ AcceptEnv XMODIFIERS
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding yes
+X11Forwarding <%= scope.function_bool2yesno([@x11forwarding]) %>
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PrintMotd yes
@@ -118,7 +116,7 @@ X11Forwarding yes
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #ShowPatchLevel no
-UseDNS <%= @usedns %>
+UseDNS <%= scope.function_bool2yesno([@usedns]) %>
 #PidFile /var/run/sshd.pid
 #MaxStartups 10:30:100
 #PermitTunnel no

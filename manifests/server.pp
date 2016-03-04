@@ -12,20 +12,33 @@
 # 92 - DenyUser intro
 #
 class openssh::server (
-                        $permitrootlogin='yes',
-                        $usedns='no',
-                        $enableldapsshkeys=false,
-                        $banner=undef,
-                        $allowusers=undef,
-                        $denyusers=undef,
-                        $ensure ='running',
-                        $manage_service=true,
-                        $manage_docker_service=true,
-                        $enable =true,
-                      )inherits params {
+                        $port                  = '22',
+                        $permitrootlogin       = 'no',
+                        $usedns                = false,
+                        $usepam                = true,
+                        $x11forwarding         = true,
+                        $passwordauth          = true,
+                        $permitemptypasswords  = false,
+                        $enableldapsshkeys     = false,
+                        $syslogfacility        = $openssh::params::syslogfacility_default,
+                        $banner                = undef,
+                        $allowusers            = undef,
+                        $denyusers             = undef,
+                        $ensure                = 'running',
+                        $manage_service        = true,
+                        $manage_docker_service = true,
+                        $enable                = true,
+                      )inherits openssh::params {
 
-  validate_array($allowusers)
-  validate_array($denyusers)
+  if($allowusers!=undef)
+  {
+    validate_array($allowusers)
+  }
+
+  if($denyusers!=undef)
+  {
+    validate_array($denyusers)
+  }
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
@@ -40,6 +53,12 @@ class openssh::server (
     package { $openssh::params::package_sftp:
       ensure => 'installed',
     }
+
+    $require_packages=Package[ [ $openssh::params::package_sshd, $openssh::params::package_sftp ] ]
+  }
+  else
+  {
+    $require_packages=Package[$openssh::params::package_sshd]
   }
 
   if($enableldapsshkeys)
@@ -63,7 +82,7 @@ class openssh::server (
     mode    => '0600',
     require => [
                   Exec['keygen rsa key'],
-                  Package[ [ $openssh::params::package_sshd, $openssh::params::package_sftp ] ],
+                  $require_packages,
               ],
     notify  => Class['openssh::service'],
   }
