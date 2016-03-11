@@ -3,8 +3,6 @@
 # = concat order
 # 00 - baseconf
 # (...)
-# 30 - Match directives
-# (...)
 # 80 - AllowUser
 # 81 - AllowUser list
 # 82 - AllowUser intro
@@ -12,6 +10,8 @@
 # 90 - DenyUser
 # 91 - DenyUser list
 # 92 - DenyUser intro
+# (...)
+# 95 - Match directives
 #
 class openssh::server (
                         $port                  = '22',

@@ -33,6 +33,11 @@ define openssh::match (
     fail('No match criteria found')
   }
 
+  if ! defined(Class['openssh::server'])
+  {
+    fail('You must include the openssh::server base class before using any openssh::server defined resources')
+  }
+
   concat::fragment { "${openssh::params::sshd_config} match ${users} ${groups} ${addresses} ${hosts}":
     target  => $openssh::params::sshd_config,
     order   => '30',
