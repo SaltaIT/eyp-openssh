@@ -10,6 +10,8 @@
 # 90 - DenyUser
 # 91 - DenyUser list
 # 92 - DenyUser intro
+# (...)
+# 95 - Match directives
 #
 class openssh::server (
                         $port                  = '22',

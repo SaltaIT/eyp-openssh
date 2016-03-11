@@ -1,0 +1,13 @@
+
+Match <%= -%>
+<%- if defined?(@groups) -%> <%= @groups.join(',') %> <% end -%>
+<%- if defined?(@users) -%> <%= @users.join(',') %> <% end -%>
+<%- if defined?(@hosts) -%> <%= @hosts.join(',') %> <% end -%>
+<%- if defined?(@addresses) -%> <%= @addresses.join(',') %> <% end %>
+  <%- if defined?(@chrootdirectory) -%>
+  ChrootDirectory <%= @chrootdirectory %>
+  <%- end -%>
+  <%- if defined?(@forcecommand) -%>
+  ForceCommand <%= @forcecommand %>
+  <%- end -%>
+  AllowTcpForwarding <%= scope.function_bool2yesno([@allow_tcp_forwarding]) %>
