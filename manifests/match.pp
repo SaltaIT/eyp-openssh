@@ -40,7 +40,7 @@ define openssh::match (
 
   concat::fragment { "${openssh::params::sshd_config} match ${users} ${groups} ${addresses} ${hosts}":
     target  => $openssh::params::sshd_config,
-    order   => '30',
+    order   => '95',
     content => template("${module_name}/match/match.erb"),
   }
 
