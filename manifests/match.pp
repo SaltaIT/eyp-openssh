@@ -38,7 +38,7 @@ define openssh::match (
     fail('You must include the openssh::server base class before using any openssh::server defined resources')
   }
 
-  concat::fragment { "${openssh::params::sshd_config} match ${users} ${groups} ${addresses} ${hosts}":
+  concat::fragment { "${openssh::params::sshd_config} match ${name} ${users} ${groups} ${addresses} ${hosts}":
     target  => $openssh::params::sshd_config,
     order   => '95',
     content => template("${module_name}/match/match.erb"),

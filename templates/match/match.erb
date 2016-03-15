@@ -1,9 +1,9 @@
 
 Match <%= -%>
-<%- if defined?(@groups) -%> <%= @groups.join(',') %> <% end -%>
-<%- if defined?(@users) -%> <%= @users.join(',') %> <% end -%>
-<%- if defined?(@hosts) -%> <%= @hosts.join(',') %> <% end -%>
-<%- if defined?(@addresses) -%> <%= @addresses.join(',') %> <% end %>
+<%- if defined?(@groups) -%> group <%= @groups.join(',') %> <% end -%>
+<%- if defined?(@users) -%> user <%= @users.join(',') %> <% end -%>
+<%- if defined?(@hosts) -%> host <%= @hosts.join(',') %> <% end -%>
+<%- if defined?(@addresses) -%> address <%= @addresses.join(',') %> <% end %>
   <%- if defined?(@chrootdirectory) -%>
   ChrootDirectory <%= @chrootdirectory %>
   <%- end -%>
