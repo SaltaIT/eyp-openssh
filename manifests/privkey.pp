@@ -12,10 +12,10 @@ define openssh::privkey(
   }
 
   file { "${homedir}/.ssh":
-    ensure => 'directory'
-    owner => $user,
-    group => $group,
-    mode => '0700',
+    ensure => 'directory',
+    owner  => $user,
+    group  => $group,
+    mode   => '0700',
   }
 
   exec { "sshkeygen ${user} ${homedir} ${type}":
