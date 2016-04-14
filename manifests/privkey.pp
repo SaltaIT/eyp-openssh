@@ -32,4 +32,12 @@ define openssh::privkey(
     require => Exec["sshkeygen ${user} ${homedir} ${type}"],
   }
 
+  file { "${homedir}/.ssh/id_${type}.pub":
+    ensure  => 'present',
+    owner   => $user,
+    group   => $group,
+    mode    => '0655',
+    require => Exec["sshkeygen ${user} ${homedir} ${type}"],
+  }
+
 }
