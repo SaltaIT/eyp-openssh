@@ -19,7 +19,7 @@ define openssh::privkey(
   }
 
   exec { "sshkeygen ${user} ${homedir} ${type}":
-    command => "ssh-keygen -N '${passphrase}' -f ${homedir}/.ssh/id_${type}",
+    command => "yes | ssh-keygen -N '${passphrase}' -f ${homedir}/.ssh/id_${type}",
     unless  => "grep BEGIN ${homedir}/.ssh/id_${type}",
     require => File["${homedir}/.ssh"],
   }
@@ -36,7 +36,7 @@ define openssh::privkey(
     ensure  => 'present',
     owner   => $user,
     group   => $group,
-    mode    => '0655',
+    mode    => '0644',
     require => Exec["sshkeygen ${user} ${homedir} ${type}"],
   }
 
