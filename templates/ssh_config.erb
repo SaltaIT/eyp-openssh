@@ -1,0 +1,6 @@
+#
+# puppet managed file
+#
+
+Host *
+  GSSAPIAuthentication <%= scope.function_bool2yesno([@gssapi_authentication]) %>
