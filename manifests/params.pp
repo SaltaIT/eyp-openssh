@@ -1,6 +1,7 @@
 class openssh::params {
 
   $sshd_config='/etc/ssh/sshd_config'
+  $ssh_config='/etc/ssh/ssh_config'
   $sshd_config_template='sshd_config.erb'
 
   $package_sshd='openssh-server'
