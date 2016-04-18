@@ -59,6 +59,8 @@ the fancy stuff with your module here.
 
 ## Reference
 
+### openssh::client
+
 ### openssh::server
 * **allowusers**: (order: DenyUsers, AllowUsers, default: undef)
 * **denyusers**: (order: DenyUsers, AllowUsers, default: undef)
