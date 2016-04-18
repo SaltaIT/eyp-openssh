@@ -5,4 +5,6 @@ class openssh::client() inherits openssh::params {
       ensure => 'installed',
   }
 
+  #TODO: afegir ssh_config
+
 }
