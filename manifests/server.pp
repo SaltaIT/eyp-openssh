@@ -32,7 +32,7 @@ class openssh::server (
                         $enable                   = true,
                         $clientaliveinterval      = $openssh::params::clientaliveinterval_default,
                         $clientalivecountmax      = $openssh::params::clientalivecountmax_default,
-                        $loglevel                 = 'INFO',
+                        $log_level                = 'INFO',
                         $ignore_rhosts            = true,
                         $hostbased_authentication = false,
                         $maxauthtries             = '4',
