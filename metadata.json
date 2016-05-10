@@ -1,8 +1,8 @@
 {
   "name": "eyp-openssh",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "author": "eyp",
-  "summary": "basic openssh client and server setup",
+  "summary": "openssh client and server management",
   "license": "Apache-2.0",
   "source": "basic openssh client / server configuration",
   "project_page": null,

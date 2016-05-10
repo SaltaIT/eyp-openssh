@@ -4,6 +4,10 @@ class openssh::params {
   $ssh_config='/etc/ssh/ssh_config'
   $sshd_config_template='sshd_config.erb'
 
+  $clientaliveinterval_default='900'
+  $clientalivecountmax_default='0'
+
+
   $package_sshd='openssh-server'
 
   case $::osfamily
