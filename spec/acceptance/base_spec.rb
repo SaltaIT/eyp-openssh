@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 require_relative './version.rb'
 
-describe 'ntp class' do
+describe 'openssh class' do
 
   context 'basic setup' do
     # Using puppet_apply as a helper
