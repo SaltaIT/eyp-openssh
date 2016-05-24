@@ -16,7 +16,7 @@ class openssh::params {
     {
       case $::operatingsystemrelease
       {
-        /^6.*$/:
+        /^[5-7].*$/:
         {
 
           $sftp_server='/usr/libexec/openssh/sftp-server'
