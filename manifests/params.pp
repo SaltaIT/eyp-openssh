@@ -8,12 +8,14 @@ class openssh::params {
   $clientalivecountmax_default='0'
 
 
-  $package_sshd='openssh-server'
+
 
   case $::osfamily
   {
     'redhat':
     {
+      $package_sshd='openssh-server'
+
       case $::operatingsystemrelease
       {
         /^[5-7].*$/:
@@ -33,6 +35,8 @@ class openssh::params {
     }
     'Debian':
     {
+      $package_sshd='openssh-server'
+
       case $::operatingsystem
       {
         'Ubuntu':
@@ -46,7 +50,6 @@ class openssh::params {
 
               $sshd_service='ssh'
 
-
               $package_ssh_client='openssh-client'
 
               $syslogfacility_default='AUTH'
@@ -58,6 +61,35 @@ class openssh::params {
         default: { fail('Unsupported Debian flavour!')  }
       }
     }
+    'Suse':
+    {
+      $package_sshd='openssh'
+
+      case $::operatingsystem
+      {
+        'SLES':
+        {
+          case $::operatingsystemrelease
+          {
+            '11.3':
+            {
+              $sftp_server='/usr/lib/ssh/sftp-server'
+              $package_sftp=undef
+
+              $sshd_service='sshd'
+
+              $package_ssh_client=undef
+
+              $syslogfacility_default='AUTH'
+
+            }
+            default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
+          }
+        }
+        default: { fail("Unsupported operating system ${::operatingsystem}") }
+      }
+    }
+
     default: { fail('Unsupported OS!')  }
   }
 }

@@ -19,26 +19,24 @@
 
 ## Overview
 
-openssh client and server management
+openssh management
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+openssh client and server management
 
 ## Setup
 
 ### What openssh affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+Manages:
+* files:
+  * **/etc/ssh/sshd_config**
+  * **/etc/ssh/ssh_config**
+* packages:
+  * client package (if not included in server package)
+  * server package
+
 
 ### Setup Requirements
 
@@ -46,11 +44,11 @@ This module requires pluginsync enabled
 
 ### Beginning with openssh
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'openssh::client': }
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+class { 'openssh::server': }
+```
 
 ## Usage
 
@@ -59,15 +57,84 @@ the fancy stuff with your module here.
 
 ## Reference
 
-### openssh::client
+### classes
 
-### openssh::server
+#### openssh
+
+empty class - just a placeholder
+
+#### openssh::client
+
+Most variables are standard postfix variables, please refer to postfix documentation for further detaisl:
+
+* **gssapi_authentication**: (default: true)
+
+#### openssh::server
+
+Most variables are standard postfix variables, please refer to ssh documentation for further detaisl:
+
+* **ensure**: service's ensure (default: running)
+* **manage_service** (default: true)
+* **manage_docker_service** (default: true)
+* **enable** (default: true)
+* **port**: (default: 22)
+* **permitrootlogin**: (default: no)
+* **usedns** (default: false)
+* **usepam** (default: true)
+* **x11forwarding** (default: false)
+* **passwordauth** (default: true)
+* **permitemptypasswords** (default: false)
+* **enableldapsshkeys** (default: false)
+* **syslogfacility**           
+* **banner** (default: undef)
+* **clientaliveinterval** (default: 900)
+* **clientalivecountmax** (default: 0)
+* **log_level** (default: INFO)
+* **ignore_rhosts** (default: true)
+* **hostbased_authentication** (default: false)
+* **maxauthtries** (default: 4)
+* **permit_user_environment** (default: false)
 * **allowusers**: (order: DenyUsers, AllowUsers, default: undef)
 * **denyusers**: (order: DenyUsers, AllowUsers, default: undef)
 
+#### openssh::service
+
+private class to manage **openssh::server**'s service
+
+### defines
+
+#### openssh::allowuser
+* **username** (default: resource's name)
+
+#### openssh::denyuser
+* **username** (default: resource's name)
+
+####  openssh::match
+* matchers (**at least one must be set**):
+  * **groups** (default: undef)
+  * **users** (default: undef)
+  * **addresses** (default: undef)
+  * **hosts** (default: undef)
+* **chrootdirectory**: It might not be supported (default: undef)
+* **forcecommand**: (default: undef)
+* **allow_tcp_forwarding** (default: false)
+
+####  openssh::privkey
+* **ensure**     (default: present)
+* **user**       = $name,
+* **group**      = $name,
+* **homedir**    = "/home/${name}",
+* **type**      (default: rsa)
+* **passphrase** (default: '')
+
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on:
+* CentOS 5
+* CentOS 6
+* CentOS 7
+* Ubuntu 14.04
+* SLES 11 SP3
 
 ## Development
 
@@ -76,9 +143,9 @@ have some tests to check both presence and absence of any feature
 
 ### TODO
 
-* Move openssh::server configuration options to the openssh::server namespace, for example:
-  * openssh::denyuser -> openssh::server::denyuser
-* Implement openssh::client::host using concat { $openssh::params::ssh_config: }
+* Move openssh::server configuration options to the **openssh::server** namespace, for example:
+  * **openssh::denyuser** -> **openssh::server::denyuser**
+* Implement **openssh::client::host** using concat { $openssh::params::ssh_config: }
 
 ### Contributing
 

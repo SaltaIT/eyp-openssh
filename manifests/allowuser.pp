@@ -1,4 +1,4 @@
-define openssh::allowuser($username=$name) {
+define openssh::allowuser($username = $name) {
 
   if ! defined(Class['openssh::server'])
   {

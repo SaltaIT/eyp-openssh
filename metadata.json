@@ -1,6 +1,6 @@
 {
   "name": "eyp-openssh",
-  "version": "0.1.18",
+  "version": "0.1.21",
   "author": "eyp",
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
@@ -15,6 +15,22 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "5", "6", "7" ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [ "5", "6", "7" ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [ "5", "6", "7" ]
+    },
+    {
+      "operatingsystem": "OEL",
+      "operatingsystemrelease": [ "5", "6", "7" ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [ "5", "6", "7" ]
     },
     {

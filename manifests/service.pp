@@ -1,8 +1,8 @@
 class openssh::service(
-                        $ensure ='running',
-                        $manage_service=true,
-                        $manage_docker_service=true,
-                        $enable =true,
+                        $ensure                = 'running',
+                        $manage_service        = true,
+                        $manage_docker_service = true,
+                        $enable                = true,
                       ) inherits openssh::params {
 
   validate_bool($manage_docker_service)
