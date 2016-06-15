@@ -73,27 +73,27 @@ Most variables are standard postfix variables, please refer to postfix documenta
 
 Most variables are standard postfix variables, please refer to ssh documentation for further detaisl:
 
+* **ensure**: service's ensure (default: running)
+* **manage_service** (default: true)
+* **manage_docker_service** (default: true)
+* **enable** (default: true)
 * **port**: (default: 22)
 * **permitrootlogin**: (default: no)
-* **usedns**                   = false,
-* **usepam**                   = true,
-* **x11forwarding**            = false,
-* **passwordauth**             = true,
-* **permitemptypasswords**     = false,
-* **enableldapsshkeys**        = false,
-* **syslogfacility**           = $openssh::params::syslogfacility_default,
-* **banner**                   = undef,
-* **ensure**                   = 'running',
-* **manage_service**           = true,
-* **manage_docker_service**    = true,
-* **enable**                   = true,
-* **clientaliveinterval**      = $openssh::params::clientaliveinterval_default,
-* **clientalivecountmax**      = $openssh::params::clientalivecountmax_default,
-* **log_level**                = 'INFO',
-* **ignore_rhosts**            = true,
-* **hostbased_authentication** = false,
-* **maxauthtries**             = '4',
-* **permit_user_environment**  = false,
+* **usedns** (default: false)
+* **usepam** (default: true)
+* **x11forwarding** (default: false)
+* **passwordauth** (default: true)
+* **permitemptypasswords** (default: false)
+* **enableldapsshkeys** (default: false)
+* **syslogfacility**           
+* **banner** (default: undef)
+* **clientaliveinterval** (default: 900)
+* **clientalivecountmax** (default: 0)
+* **log_level** (default: INFO)
+* **ignore_rhosts** (default: true)
+* **hostbased_authentication** (default: false)
+* **maxauthtries** (default: 4)
+* **permit_user_environment** (default: false)
 * **allowusers**: (order: DenyUsers, AllowUsers, default: undef)
 * **denyusers**: (order: DenyUsers, AllowUsers, default: undef)
 
@@ -134,6 +134,7 @@ Tested on:
 * CentOS 6
 * CentOS 7
 * Ubuntu 14.04
+* SLES 11 SP3
 
 ## Development
 
