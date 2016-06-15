@@ -52,8 +52,44 @@ class { 'openssh::server': }
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+manage user's priv keys:
+```puppet
+class { 'openssh': }
+class { 'openssh::server': }
+class { 'openssh::client': }
+
+openssh::privkey { 'postgres':
+  homedir => '/var/lib/pgsql',
+}
+```
+
+matchers:
+```puppet
+openssh::match{'chroot':
+  groups => [ 'sftp' ],
+  forcecommand => 'internal-sftp',
+  chrootdirectory => '%h',
+}
+```
+
+allow/deny users:
+
+```puppet
+openssh::denyuser { 'loluser': }
+openssh::denyuser { 'loluser2': }
+
+openssh::allowuser { 'allowuser5': }
+openssh::allowuser { 'allowuser6': }
+```
+using openssh::server's array:
+
+```puppet
+class { 'openssh::server':
+  denyusers => [ 'loluser3', 'loluser4' ],
+  allowusers => [ 'root', 'ggg', 'kk', 'rrr' ],
+  enableldapsshkeys => false,
+}
+```
 
 ## Reference
 
