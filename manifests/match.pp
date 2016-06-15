@@ -1,11 +1,11 @@
 define openssh::match (
-                        $groups=undef,
-                        $users=undef,
-                        $addresses=undef,
-                        $hosts=undef,
-                        $chrootdirectory=undef,
-                        $forcecommand=undef,
-                        $allow_tcp_forwarding=false,
+                        $groups               = undef,
+                        $users                = undef,
+                        $addresses            = undef,
+                        $hosts                = undef,
+                        $chrootdirectory      = undef,
+                        $forcecommand         = undef,
+                        $allow_tcp_forwarding = false,
                       ) {
   #
   if($groups!=undef)

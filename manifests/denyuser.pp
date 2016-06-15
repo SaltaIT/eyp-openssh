@@ -1,4 +1,4 @@
-define openssh::denyuser($username=$name) {
+define openssh::denyuser($username = $name) {
 
   if ! defined(Class['openssh::server'])
   {

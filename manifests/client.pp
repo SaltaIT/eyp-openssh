@@ -1,5 +1,5 @@
 #
-class openssh::client($gssapi_authentication=true) inherits openssh::params {
+class openssh::client($gssapi_authentication = true) inherits openssh::params {
 
   if($openssh::params::package_ssh_client!=undef)
   {
