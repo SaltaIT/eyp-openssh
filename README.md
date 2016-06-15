@@ -46,11 +46,11 @@ This module requires pluginsync enabled
 
 ### Beginning with openssh
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'openssh::client': }
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+class { 'openssh::server': }
+```
 
 ## Usage
 

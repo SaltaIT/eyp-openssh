@@ -1,8 +1,17 @@
 #
 class openssh::client($gssapi_authentication=true) inherits openssh::params {
 
-  package { $openssh::params::package_ssh_client:
-      ensure => 'installed',
+  if($openssh::params::package_ssh_client!=undef)
+  {
+    $sshclient_package=$openssh::params::package_ssh_client
+    package { $openssh::params::package_ssh_client:
+        ensure => 'installed',
+    }
+    $require_ssh_config=Package[$openssh::params::package_ssh_client]
+  }
+  else
+  {
+    $require_ssh_config=Class['openssh::server']
   }
 
   concat { $openssh::params::ssh_config:
@@ -10,7 +19,7 @@ class openssh::client($gssapi_authentication=true) inherits openssh::params {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require => Package[$openssh::params::package_ssh_client],
+    require => $require_ssh_config,
   }
 
   #TODO: afegir ssh_config
