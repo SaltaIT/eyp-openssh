@@ -52,7 +52,8 @@ class { 'openssh::server': }
 
 ## Usage
 
-manage user's priv keys:
+### manage user's priv keys
+
 ```puppet
 class { 'openssh': }
 class { 'openssh::server': }
@@ -63,7 +64,8 @@ openssh::privkey { 'postgres':
 }
 ```
 
-matchers:
+### matchers
+
 ```puppet
 openssh::match{'chroot':
   groups => [ 'sftp' ],
@@ -72,7 +74,7 @@ openssh::match{'chroot':
 }
 ```
 
-allow/deny users:
+### allow/deny users
 
 ```puppet
 openssh::denyuser { 'loluser': }
@@ -81,7 +83,7 @@ openssh::denyuser { 'loluser2': }
 openssh::allowuser { 'allowuser5': }
 openssh::allowuser { 'allowuser6': }
 ```
-using openssh::server's array:
+### using openssh::server's array
 
 ```puppet
 class { 'openssh::server':
@@ -89,6 +91,28 @@ class { 'openssh::server':
   allowusers => [ 'root', 'ggg', 'kk', 'rrr' ],
   enableldapsshkeys => false,
 }
+```
+
+### Restric login per user to a given set of IPs
+
+```puppet
+openssh::match{ 'users ips allowed':
+  users => [ 'ada', 'ualoc' ],
+  allowed_ips => [ '1.2.3.4', '5.6.7.8', '1.1.1.1' ],
+}
+```
+
+This will generate the following config in sshd_config:
+
+```
+Match  user ada,ualoc
+  AllowTcpForwarding no
+  AllowUsers ada@1.2.3.4
+  AllowUsers ada@5.6.7.8
+  AllowUsers ada@1.1.1.1
+  AllowUsers ualoc@1.2.3.4
+  AllowUsers ualoc@5.6.7.8
+  AllowUsers ualoc@1.1.1.1
 ```
 
 ## Reference
@@ -154,6 +178,7 @@ private class to manage **openssh::server**'s service
 * **chrootdirectory**: It might not be supported (default: undef)
 * **forcecommand**: (default: undef)
 * **allow_tcp_forwarding** (default: false)
+* **allowed_ips**: list of allowed IPs for this user (default: undef)
 
 ####  openssh::privkey
 * **ensure**     (default: present)

@@ -6,6 +6,7 @@ define openssh::match (
                         $chrootdirectory      = undef,
                         $forcecommand         = undef,
                         $allow_tcp_forwarding = false,
+                        $allowed_ips          = undef,
                       ) {
   #
   if($groups!=undef)
