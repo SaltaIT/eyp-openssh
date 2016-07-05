@@ -11,3 +11,10 @@ Match <%= -%>
   ForceCommand <%= @forcecommand %>
   <%- end -%>
   AllowTcpForwarding <%= scope.function_bool2yesno([@allow_tcp_forwarding]) %>
+  <%- if defined?(@allowed_ips) -%>
+  <%- @users.each do |username| -%>
+  <%- @allowed_ips.each do |ip| -%>
+  AllowUsers <%= username %>@<%= ip %>
+  <%- end -%>
+  <%- end -%>
+  <%- end -%>
