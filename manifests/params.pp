@@ -4,11 +4,8 @@ class openssh::params {
   $ssh_config='/etc/ssh/ssh_config'
   $sshd_config_template='sshd_config.erb'
 
-  $clientaliveinterval_default='900'
-  $clientalivecountmax_default='0'
-
-
-
+  $clientaliveinterval_default='240'
+  $clientalivecountmax_default='15'
 
   case $::osfamily
   {
@@ -20,7 +17,6 @@ class openssh::params {
       {
         /^[5-7].*$/:
         {
-
           $sftp_server='/usr/libexec/openssh/sftp-server'
           $package_sftp=undef
 
@@ -81,7 +77,6 @@ class openssh::params {
               $package_ssh_client=undef
 
               $syslogfacility_default='AUTH'
-
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }
