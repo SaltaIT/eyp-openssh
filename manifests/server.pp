@@ -42,7 +42,15 @@ class openssh::server (
                         $logingracetime           = $logingracetime_default,
                       )inherits openssh::params {
 
-  validate_array($ciphers)
+  if($ciphers!=undef)
+  {
+    validate_array($ciphers)
+  }
+
+  if($macs!=undef)
+  {
+    validate_array($macs)
+  }
 
   if($allowusers!=undef)
   {

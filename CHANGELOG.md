@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.27
+
+* bugfix validate openssh::server
+
 ## 0.1.26
 
 * **openssh::server**:
