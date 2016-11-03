@@ -37,8 +37,8 @@ class openssh::server (
                         $hostbased_authentication = false,
                         $maxauthtries             = '4',
                         $permit_user_environment  = false,
-                        $ciphers                  = $sshd_ciphers_default,
-                        $macs                     = $sshd_macs_default,
+                        $ciphers                  = undef,
+                        $macs                     = undef,
                         $logingracetime           = $logingracetime_default,
                       )inherits openssh::params {
 

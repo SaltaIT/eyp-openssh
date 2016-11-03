@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.26
+
+* **openssh::server**:
+  * rollback enforced secure ciphers - set to undef
+  * rollback enforced secure MACs - set to undef
+
 ## 0.1.25
 * **openssh::server**:
   * rollback 0.1.24 & 0.1.23
