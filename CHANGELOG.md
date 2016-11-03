@@ -1,9 +1,18 @@
 # CHANGELOG
 
+## 0.1.25
+* **openssh::server**:
+  * rollback 0.1.24 & 0.1.23
+  * enforced secure ciphers
+  * enforced secure MACs
+  * logingracetime set by default to 60
+
 ## 0.1.24
 
-* changed default **ClientAliveCountMax** to **15**
+* **openssh::server**:
+  * changed default **ClientAliveCountMax** to **15**
 
 ## 0.1.23
 
-* changed default **ClientAliveInterval** to **240**
+* **openssh::server**:
+  * changed default **ClientAliveInterval** to **240**

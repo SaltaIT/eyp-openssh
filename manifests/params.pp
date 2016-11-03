@@ -4,8 +4,12 @@ class openssh::params {
   $ssh_config='/etc/ssh/ssh_config'
   $sshd_config_template='sshd_config.erb'
 
-  $clientaliveinterval_default='240'
-  $clientalivecountmax_default='15'
+  $clientaliveinterval_default='300'
+  $clientalivecountmax_default='0'
+
+  $logingracetime_default = '60'
+
+  $sshd_ciphers_default=[ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
 
   case $::osfamily
   {
@@ -13,18 +17,36 @@ class openssh::params {
     {
       $package_sshd='openssh-server'
 
+      $sftp_server='/usr/libexec/openssh/sftp-server'
+      $package_sftp=undef
+
+      $sshd_service='sshd'
+
+      $package_ssh_client='openssh-clients'
+
+      $syslogfacility_default='AUTHPRIV'
+
       case $::operatingsystemrelease
       {
-        /^[5-7].*$/:
+        /^[56].*$/:
         {
-          $sftp_server='/usr/libexec/openssh/sftp-server'
-          $package_sftp=undef
-
-          $sshd_service='sshd'
-
-          $package_ssh_client='openssh-clients'
-
-          $syslogfacility_default='AUTHPRIV'
+          $sshd_macs_default = [
+            'hmac-sha2-512',
+            'hmac-sha2-256',
+          ]
+        }
+        /^7.*$/:
+        {
+          $sshd_macs_default = [
+            'hmac-sha2-512-etm@openssh.com',
+            'hmac-sha2-256-etm@openssh.com',
+            'umac-128-etm@openssh.com',
+            'hmac-sha2-512',
+            'hmac-sha2-256',
+            'umac-128@openssh.com',
+            'curve25519-sha256@libssh.org',
+            'diffie-hellman-group-exchange-sha256',
+          ]
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -32,6 +54,15 @@ class openssh::params {
     'Debian':
     {
       $package_sshd='openssh-server'
+
+      $sftp_server='/usr/lib/openssh/sftp-server'
+      $package_sftp='openssh-sftp-server'
+
+      $sshd_service='ssh'
+
+      $package_ssh_client='openssh-client'
+
+      $syslogfacility_default='AUTH'
 
       case $::operatingsystem
       {
@@ -41,14 +72,16 @@ class openssh::params {
           {
             /^14.*$/:
             {
-              $sftp_server='/usr/lib/openssh/sftp-server'
-              $package_sftp='openssh-sftp-server'
-
-              $sshd_service='ssh'
-
-              $package_ssh_client='openssh-client'
-
-              $syslogfacility_default='AUTH'
+              $sshd_macs_default = [
+                'hmac-sha2-512-etm@openssh.com',
+                'hmac-sha2-256-etm@openssh.com',
+                'umac-128-etm@openssh.com',
+                'hmac-sha2-512',
+                'hmac-sha2-256',
+                'umac-128@openssh.com',
+                'curve25519-sha256@libssh.org',
+                'diffie-hellman-group-exchange-sha256',
+              ]
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }

@@ -37,7 +37,12 @@ class openssh::server (
                         $hostbased_authentication = false,
                         $maxauthtries             = '4',
                         $permit_user_environment  = false,
+                        $ciphers                  = $sshd_ciphers_default,
+                        $macs                     = $sshd_macs_default,
+                        $logingracetime           = $logingracetime_default,
                       )inherits openssh::params {
+
+  validate_array($ciphers)
 
   if($allowusers!=undef)
   {
