@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.28
+
+* secure ciphers & MACs
+
 ## 0.1.27
 
 * bugfix validate openssh::server

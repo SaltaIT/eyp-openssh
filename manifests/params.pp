@@ -30,10 +30,11 @@ class openssh::params {
       {
         /^[56].*$/:
         {
-          $sshd_macs_default = [
-            'hmac-sha2-512',
-            'hmac-sha2-256',
-          ]
+          $sshd_macs_default = undef
+          # $sshd_macs_default = [
+          #   'hmac-sha2-512',
+          #   'hmac-sha2-256',
+          # ]
         }
         /^7.*$/:
         {
@@ -44,8 +45,6 @@ class openssh::params {
             'hmac-sha2-512',
             'hmac-sha2-256',
             'umac-128@openssh.com',
-            'curve25519-sha256@libssh.org',
-            'diffie-hellman-group-exchange-sha256',
           ]
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
@@ -79,8 +78,6 @@ class openssh::params {
                 'hmac-sha2-512',
                 'hmac-sha2-256',
                 'umac-128@openssh.com',
-                'curve25519-sha256@libssh.org',
-                'diffie-hellman-group-exchange-sha256',
               ]
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
