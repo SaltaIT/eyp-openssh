@@ -43,6 +43,8 @@ class openssh::params {
           $sshd_macs_default = [
             'hmac-sha1',
           ]
+
+          # -_(._.)_-
         }
         /^7.*$/:
         {
