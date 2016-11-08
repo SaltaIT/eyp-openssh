@@ -30,11 +30,21 @@ class openssh::params {
       {
         /^[56].*$/:
         {
-          $sshd_macs_default = undef
-          # $sshd_macs_default = [
-          #   'hmac-sha2-512',
-          #   'hmac-sha2-256',
-          # ]
+          # disponibles:
+          #
+          # hmac-md5,
+          # hmac-sha1,
+          # umac-64@openssh.com,
+          # hmac-ripemd160,
+          # hmac-sha1-96,
+          # hmac-md5-96
+
+          # hmac-sha2-256,hmac-sha2-512,hmac-sha1
+          $sshd_macs_default = [
+            'hmac-sha1',
+            # 'hmac-sha2-512',
+            # 'hmac-sha2-256',
+          ]
         }
         /^7.*$/:
         {
