@@ -24,6 +24,13 @@ Port <%= @port %>
 # activation of protocol 1
 Protocol 2
 
+<% if defined?(@ciphers) -%>
+Ciphers <%= @ciphers.join(',') %>
+<% end -%>
+<% if defined?(@macs) -%>
+MACs <%= @macs.join(',') %>
+<% end -%>
+
 # HostKey for protocol version 1
 #HostKey /etc/ssh/ssh_host_key
 # HostKeys for protocol version 2
@@ -41,7 +48,9 @@ LogLevel <%= @log_level %>
 
 # Authentication:
 
-#LoginGraceTime 2m
+<% if defined?(@logingracetime) -%>
+LoginGraceTime <%= @logingracetime %>
+<% end -%>
 PermitRootLogin <%= @permitrootlogin %>
 #StrictModes yes
 MaxAuthTries <%= @maxauthtries %>
