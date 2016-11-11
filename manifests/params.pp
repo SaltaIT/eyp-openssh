@@ -5,7 +5,7 @@ class openssh::params {
   $sshd_config_template='sshd_config.erb'
 
   $clientaliveinterval_default='300'
-  $clientalivecountmax_default='0'
+  $clientalivecountmax_default='5'
 
   $logingracetime_default = '60'
 
