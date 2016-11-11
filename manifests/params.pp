@@ -197,6 +197,8 @@ class openssh::params {
               $package_ssh_client=undef
 
               $syslogfacility_default='AUTH'
+
+              $sshd_macs_default = undef
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }
