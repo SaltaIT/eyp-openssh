@@ -3,6 +3,7 @@
 ## 0.1.28
 
 * secure ciphers & MACs
+* changed default **ClientAliveCountMax** to **5**
 
 ## 0.1.27
 
