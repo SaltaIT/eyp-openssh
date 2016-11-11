@@ -26,38 +26,118 @@ class openssh::params {
 
       $syslogfacility_default='AUTHPRIV'
 
-      case $::operatingsystemrelease
+      case $::operatingsystem
       {
-        /^[56].*$/:
+        'RedHat':
         {
-          # disponibles:
-          #
-          # hmac-md5,
-          # hmac-sha1,
-          # umac-64@openssh.com,
-          # hmac-ripemd160,
-          # hmac-sha1-96,
-          # hmac-md5-96
 
-          # hmac-sha2-256,hmac-sha2-512,hmac-sha1
-          $sshd_macs_default = [
-            'hmac-sha1',
-          ]
+          case $::operatingsystemrelease
+          {
+            /^[56].*$/:
+            {
+              # disponibles:
+              #
+              # RHEL 6
+              # hmac-md5,
+              # hmac-sha1,
+              # umac-64@openssh.com,
+              # hmac-ripemd160,
+              # hmac-sha1-96,
+              # hmac-md5-96,
+              # * hmac-sha2-256,
+              # * hmac-sha2-512,
+              # hmac-ripemd160@openssh.com
 
-          # -_(._.)_-
+              $sshd_macs_default = [
+                'hmac-sha2-256',
+                'hmac-sha2-512',
+              ]
+
+              # -_(._.)_-
+            }
+            /^7.*$/:
+            {
+              # RHEL 7
+
+              # hmac-md5-etm@openssh.com,
+              # hmac-sha1-etm@openssh.com,
+              # umac-64-etm@openssh.com,
+              # * umac-128-etm@openssh.com,
+              # * hmac-sha2-256-etm@openssh.com,
+              # * hmac-sha2-512-etm@openssh.com,
+              # hmac-ripemd160-etm@openssh.com,
+              # hmac-sha1-96-etm@openssh.com,
+              # hmac-md5-96-etm@openssh.com,
+              # hmac-md5,
+              # hmac-sha1,
+              # umac-64@openssh.com,
+              # * umac-128@openssh.com,
+              # * hmac-sha2-256,
+              # * hmac-sha2-512,
+              # hmac-ripemd160,
+              # hmac-sha1-96,
+              # hmac-md5-96
+
+              $sshd_macs_default = [
+                'hmac-sha2-512-etm@openssh.com',
+                'hmac-sha2-256-etm@openssh.com',
+                'umac-128-etm@openssh.com',
+                'hmac-sha2-512',
+                'hmac-sha2-256',
+                'umac-128@openssh.com',
+              ]
+            }
+            default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
+          }
         }
-        /^7.*$/:
+        default:
         {
-          $sshd_macs_default = [
-            'hmac-sha2-512-etm@openssh.com',
-            'hmac-sha2-256-etm@openssh.com',
-            'umac-128-etm@openssh.com',
-            'hmac-sha2-512',
-            'hmac-sha2-256',
-            'umac-128@openssh.com',
-          ]
+          case $::operatingsystemrelease
+          {
+            /^[56].*$/:
+            {
+              # disponibles:
+              #
+              # CentOS 6
+              # hmac-md5,
+              # hmac-sha1,
+              # umac-64@openssh.com,
+              # hmac-ripemd160,
+              # hmac-sha1-96,
+              # hmac-md5-96
+
+              # hmac-sha2-256,hmac-sha2-512,hmac-sha1
+              $sshd_macs_default = [
+                'hmac-sha1',
+              ]
+
+              # -_(._.)_-
+            }
+            /^7.*$/:
+            {
+              # CentOS
+
+              # hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,
+              # umac-64-etm@openssh.com,umac-128-etm@openssh.com,
+              # hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,
+              # hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,
+              # hmac-md5-96-etm@openssh.com,
+              # hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,
+              # hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,
+              # hmac-sha1-96,hmac-md5-96
+
+              $sshd_macs_default = [
+                'hmac-sha2-512-etm@openssh.com',
+                'hmac-sha2-256-etm@openssh.com',
+                'umac-128-etm@openssh.com',
+                'hmac-sha2-512',
+                'hmac-sha2-256',
+                'umac-128@openssh.com',
+              ]
+            }
+            default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
+          }
         }
-        default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
     }
     'Debian':
