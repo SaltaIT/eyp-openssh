@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.30
+
+global variable eypopensshserver::hardening to enable/disable default hardening (default: false)
+
+## 0.1.29
+
+* rollback secure ciphers & MACs
+
 ## 0.1.28
 
 * secure ciphers & MACs
