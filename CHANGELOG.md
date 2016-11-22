@@ -2,7 +2,7 @@
 
 ## 0.1.30
 
-global variable eypopensshserver::hardening to enable/disable default hardening (default: false)
+global variable **eypopensshserver::hardening** to enable/disable default hardening (default: false)
 
 ## 0.1.29
 
