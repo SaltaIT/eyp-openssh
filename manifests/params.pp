@@ -9,7 +9,15 @@ class openssh::params {
 
   $logingracetime_default = '60'
 
-  $sshd_ciphers_hardening=[ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
+  if(hiera('eypopensshserver::hardening', false))
+  {
+    $sshd_ciphers_default = [ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
+  }
+  else
+  {
+    $sshd_ciphers_default = undef
+  }
+
 
   case $::osfamily
   {
@@ -48,10 +56,18 @@ class openssh::params {
               # * hmac-sha2-512,
               # hmac-ripemd160@openssh.com
 
-              $sshd_macs_hardening = [
-                'hmac-sha2-256',
-                'hmac-sha2-512',
-              ]
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = [
+                  'hmac-sha2-256',
+                  'hmac-sha2-512',
+                ]
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
+
 
               # -_(._.)_-
             }
@@ -78,14 +94,21 @@ class openssh::params {
               # hmac-sha1-96,
               # hmac-md5-96
 
-              $sshd_macs_hardening = [
-                'hmac-sha2-512-etm@openssh.com',
-                'hmac-sha2-256-etm@openssh.com',
-                'umac-128-etm@openssh.com',
-                'hmac-sha2-512',
-                'hmac-sha2-256',
-                'umac-128@openssh.com',
-              ]
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = [
+                  'hmac-sha2-512-etm@openssh.com',
+                  'hmac-sha2-256-etm@openssh.com',
+                  'umac-128-etm@openssh.com',
+                  'hmac-sha2-512',
+                  'hmac-sha2-256',
+                  'umac-128@openssh.com',
+                ]
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
             }
             default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
           }
@@ -107,9 +130,18 @@ class openssh::params {
               # hmac-md5-96
 
               # hmac-sha2-256,hmac-sha2-512,hmac-sha1
-              $sshd_macs_hardening = [
-                'hmac-sha1',
-              ]
+
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = [
+                  'hmac-sha1',
+                ]
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
+
 
               # -_(._.)_-
             }
@@ -126,14 +158,22 @@ class openssh::params {
               # hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,
               # hmac-sha1-96,hmac-md5-96
 
-              $sshd_macs_hardening = [
-                'hmac-sha2-512-etm@openssh.com',
-                'hmac-sha2-256-etm@openssh.com',
-                'umac-128-etm@openssh.com',
-                'hmac-sha2-512',
-                'hmac-sha2-256',
-                'umac-128@openssh.com',
-              ]
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = [
+                  'hmac-sha2-512-etm@openssh.com',
+                  'hmac-sha2-256-etm@openssh.com',
+                  'umac-128-etm@openssh.com',
+                  'hmac-sha2-512',
+                  'hmac-sha2-256',
+                  'umac-128@openssh.com',
+                ]
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
+
             }
             default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
           }
@@ -161,14 +201,22 @@ class openssh::params {
           {
             /^14.*$/:
             {
-              $sshd_macs_hardening = [
-                'hmac-sha2-512-etm@openssh.com',
-                'hmac-sha2-256-etm@openssh.com',
-                'umac-128-etm@openssh.com',
-                'hmac-sha2-512',
-                'hmac-sha2-256',
-                'umac-128@openssh.com',
-              ]
+
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = [
+                  'hmac-sha2-512-etm@openssh.com',
+                  'hmac-sha2-256-etm@openssh.com',
+                  'umac-128-etm@openssh.com',
+                  'hmac-sha2-512',
+                  'hmac-sha2-256',
+                  'umac-128@openssh.com',
+                ]
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
@@ -198,7 +246,14 @@ class openssh::params {
 
               $syslogfacility_default='AUTH'
 
-              $sshd_macs_hardening = undef
+              if(hiera('eypopensshserver::hardening', false))
+              {
+                $sshd_macs_default = undef
+              }
+              else
+              {
+                $sshd_macs_default = undef
+              }
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }

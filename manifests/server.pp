@@ -37,8 +37,8 @@ class openssh::server (
                         $hostbased_authentication = false,
                         $maxauthtries             = '4',
                         $permit_user_environment  = false,
-                        $ciphers                  = hiera('eypopensshserver::hardening', false)? { true => $openssh::params::sshd_ciphers_hardening, false => undef },
-                        $macs                     = hiera('eypopensshserver::hardening', false)? { true => $openssh::params::sshd_macs_hardening, false => undef },
+                        $ciphers                  = $openssh::params::sshd_ciphers_default,
+                        $macs                     = hiera('eypopensshserver::hardening', false)? { true => $openssh::params::sshd_macs_default, false => undef, default => undef },
                         $logingracetime           = $logingracetime_default,
                       )inherits openssh::params {
 
