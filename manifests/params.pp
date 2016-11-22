@@ -9,7 +9,7 @@ class openssh::params {
 
   $logingracetime_default = '60'
 
-  $sshd_ciphers_default=[ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
+  $sshd_ciphers_hardening=[ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
 
   case $::osfamily
   {
@@ -48,7 +48,7 @@ class openssh::params {
               # * hmac-sha2-512,
               # hmac-ripemd160@openssh.com
 
-              $sshd_macs_default = [
+              $sshd_macs_hardening = [
                 'hmac-sha2-256',
                 'hmac-sha2-512',
               ]
@@ -78,7 +78,7 @@ class openssh::params {
               # hmac-sha1-96,
               # hmac-md5-96
 
-              $sshd_macs_default = [
+              $sshd_macs_hardening = [
                 'hmac-sha2-512-etm@openssh.com',
                 'hmac-sha2-256-etm@openssh.com',
                 'umac-128-etm@openssh.com',
@@ -107,7 +107,7 @@ class openssh::params {
               # hmac-md5-96
 
               # hmac-sha2-256,hmac-sha2-512,hmac-sha1
-              $sshd_macs_default = [
+              $sshd_macs_hardening = [
                 'hmac-sha1',
               ]
 
@@ -126,7 +126,7 @@ class openssh::params {
               # hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,
               # hmac-sha1-96,hmac-md5-96
 
-              $sshd_macs_default = [
+              $sshd_macs_hardening = [
                 'hmac-sha2-512-etm@openssh.com',
                 'hmac-sha2-256-etm@openssh.com',
                 'umac-128-etm@openssh.com',
@@ -161,7 +161,7 @@ class openssh::params {
           {
             /^14.*$/:
             {
-              $sshd_macs_default = [
+              $sshd_macs_hardening = [
                 'hmac-sha2-512-etm@openssh.com',
                 'hmac-sha2-256-etm@openssh.com',
                 'umac-128-etm@openssh.com',
@@ -198,7 +198,7 @@ class openssh::params {
 
               $syslogfacility_default='AUTH'
 
-              $sshd_macs_default = undef
+              $sshd_macs_hardening = undef
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }

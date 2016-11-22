@@ -52,6 +52,10 @@ class { 'openssh::server': }
 
 ## Usage
 
+### Cyphers / MACs hardening
+
+global variable **eypopensshserver::hardening** to enable/disable default hardening (default: false)
+
 ### manage user's priv keys
 
 ```puppet
@@ -116,6 +120,10 @@ Match  user ada,ualoc
 ```
 
 ## Reference
+
+### global variables:
+
+* **eypopensshserver::hardening**: to manage default hardening of Cyphers and MACs (default: false)
 
 ### classes
 
