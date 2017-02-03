@@ -199,7 +199,7 @@ class openssh::params {
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/:
+            /^1[46].*$/:
             {
 
               if(hiera('eypopensshserver::hardening', false))

@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## 0.1.31
+
+* ubuntu 16 support
+
 ## 0.1.30
 
-global variable **eypopensshserver::hardening** to enable/disable default hardening (default: false)
+* global variable **eypopensshserver::hardening** to enable/disable default hardening (default: false)
 
 ## 0.1.29
 

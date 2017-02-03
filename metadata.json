@@ -1,12 +1,12 @@
 {
   "name": "eyp-openssh",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "author": "eyp",
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
-  "source": "basic openssh client / server configuration",
+  "source": "https://github.com/NTTCom-MS/eyp-openssh",
   "project_page": null,
-  "issues_url": null,
+  "issues_url": "https://github.com/NTTCom-MS/eyp-openssh/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"},
@@ -35,7 +35,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04" ]
+      "operatingsystemrelease": [ "14.04", "16.04" ]
     }
   ]
 }
