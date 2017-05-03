@@ -40,6 +40,7 @@ class openssh::server (
                         $ciphers                  = $openssh::params::sshd_ciphers_default,
                         $macs                     = $openssh::params::sshd_macs_default,
                         $logingracetime           = $logingracetime_default,
+                        $sftp_command             = $openssh::params::sftp_server,
                       )inherits openssh::params {
 
   if($ciphers!=undef)

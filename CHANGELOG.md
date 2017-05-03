@@ -2,7 +2,7 @@
 
 ## 0.1.32
 
-* added sftp_command to **openssh::match**
+* added sftp_command to **openssh::server**
 
 ## 0.1.31
 

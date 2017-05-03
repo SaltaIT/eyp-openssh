@@ -138,7 +138,7 @@ Banner <%= @banner %>
 Banner none
 <% end -%>
 # override default of no subsystems
-Subsystem	sftp	<%= scope.lookupvar('openssh::params::sftp_server') %>
+Subsystem	sftp	<%= @sftp_command %>
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
