@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.32
+
+* added sftp_command to **openssh::match**
+
 ## 0.1.31
 
 * ubuntu 16 support
