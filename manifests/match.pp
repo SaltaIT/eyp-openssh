@@ -7,7 +7,6 @@ define openssh::match (
                         $forcecommand         = undef,
                         $allow_tcp_forwarding = false,
                         $allowed_ips          = undef,
-                        $sftp_command         = undef,
                       ) {
   #
   if($groups!=undef)

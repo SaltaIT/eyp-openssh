@@ -4,9 +4,6 @@ Match <%= -%>
 <%- if defined?(@users) -%> user <%= @users.join(',') %> <% end -%>
 <%- if defined?(@hosts) -%> host <%= @hosts.join(',') %> <% end -%>
 <%- if defined?(@addresses) -%> address <%= @addresses.join(',') %> <% end %>
-  <%- if defined?(@sftp_command) -%>
-  Subsystem sftp <%= @sftp_command %>
-  <%- end -%>
   <%- if defined?(@chrootdirectory) -%>
   ChrootDirectory <%= @chrootdirectory %>
   <%- end -%>
