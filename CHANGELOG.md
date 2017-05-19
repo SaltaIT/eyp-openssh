@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.33
+
+* added x11uselocalhost to **openssh:server**
+
 ## 0.1.32
 
 * added sftp_command to **openssh::server**
