@@ -164,6 +164,7 @@ Most variables are standard postfix variables, please refer to ssh documentation
 * **permit_user_environment** (default: false)
 * **allowusers**: (order: DenyUsers, AllowUsers, default: undef)
 * **denyusers**: (order: DenyUsers, AllowUsers, default: undef)
+* **x11uselocalhost** (default: false)
 
 #### openssh::service
 
