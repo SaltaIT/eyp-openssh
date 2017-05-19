@@ -114,7 +114,7 @@ AcceptEnv XMODIFIERS
 #GatewayPorts no
 X11Forwarding <%= scope.function_bool2yesno([@x11forwarding]) %>
 #X11DisplayOffset 10
-#X11UseLocalhost yes
+X11UseLocalhost <%= scope.function_bool2yesno([@x11uselocalhost]) %>
 #PrintMotd yes
 #PrintLastLog yes
 #TCPKeepAlive yes
