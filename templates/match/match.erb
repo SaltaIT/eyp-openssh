@@ -7,7 +7,7 @@ Match <%= -%>
   <%- if defined?(@chrootdirectory) -%>
   ChrootDirectory <%= @chrootdirectory %>
   <%- end -%>
-  <%- if defined?(@) -%>
+  <%- if defined?(@password_authentication) -%>
   PasswordAuthentication <%= scope.function_bool2yesno([@password_authentication]) %>
   <%- end -%>
   <%- if defined?(@forcecommand) -%>
