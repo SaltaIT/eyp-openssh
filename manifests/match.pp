@@ -1,12 +1,13 @@
 define openssh::match (
-                        $groups               = undef,
-                        $users                = undef,
-                        $addresses            = undef,
-                        $hosts                = undef,
-                        $chrootdirectory      = undef,
-                        $forcecommand         = undef,
-                        $allow_tcp_forwarding = false,
-                        $allowed_ips          = undef,
+                        $groups                  = undef,
+                        $users                   = undef,
+                        $addresses               = undef,
+                        $hosts                   = undef,
+                        $chrootdirectory         = undef,
+                        $forcecommand            = undef,
+                        $allow_tcp_forwarding    = undef,
+                        $allowed_ips             = undef,
+                        $password_authentication = undef,
                       ) {
   #
   if($groups!=undef)

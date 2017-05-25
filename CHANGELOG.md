@@ -16,6 +16,8 @@
   * pubkey_authentication
   * challenge_response_authentication
   * print_motd
+* added **password_authentication** to **openssh::match**
+* **INCOMPATIBLE CHANGE**: changed default value for **allow_tcp_forwarding** from false to undef in **openssh::match**
 
 ## 0.1.33
 

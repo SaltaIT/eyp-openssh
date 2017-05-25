@@ -7,10 +7,15 @@ Match <%= -%>
   <%- if defined?(@chrootdirectory) -%>
   ChrootDirectory <%= @chrootdirectory %>
   <%- end -%>
+  <%- if defined?(@) -%>
+  PasswordAuthentication <%= scope.function_bool2yesno([@password_authentication]) %>
+  <%- end -%>
   <%- if defined?(@forcecommand) -%>
   ForceCommand <%= @forcecommand %>
   <%- end -%>
+  <%- if defined?(@allow_tcp_forwarding) -%>
   AllowTcpForwarding <%= scope.function_bool2yesno([@allow_tcp_forwarding]) %>
+  <%- end -%>
   <%- if defined?(@allowed_ips) -%>
   <%- @users.each do |username| -%>
   <%- @allowed_ips.each do |ip| -%>
