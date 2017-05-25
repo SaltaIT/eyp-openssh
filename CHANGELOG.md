@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 0.1.34
+
+* added more sshd variables:
+  * address_family
+  * listen_address
+  * key_regeneration_interval
+  * server_key_bits
+  * strict_modes
+  * max_sessions
+  * max_startups_start
+  * max_startups_rate
+  * max_startups_full
+  * rsa_authentication
+  * pubkey_authentication
+  * challenge_response_authentication
+  * print_motd
+
 ## 0.1.33
 
 * added x11uselocalhost to **openssh:server**

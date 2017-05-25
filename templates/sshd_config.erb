@@ -1,23 +1,13 @@
-#	$OpenBSD: sshd_config,v 1.80 2008/07/02 02:24:18 djm Exp $
-
 #
 # puppet managed file, do NOT edit
 #
 
-# This is the sshd server system-wide configuration file.  See
-# sshd_config(5) for more information.
-
-# This sshd was compiled with PATH=/usr/local/bin:/bin:/usr/bin
-
-# The strategy used for options in the default sshd_config shipped with
-# OpenSSH is to specify options with their default value where
-# possible, but leave them commented.  Uncommented options change a
-# default value.
-
+# Network options
 Port <%= @port %>
-#AddressFamily any
-#ListenAddress 0.0.0.0
-#ListenAddress ::
+AddressFamily <%= @address_family %>
+<% @listen_address.each do |val| -%>
+ListenAddress <%= val %>
+<% end -%>
 
 # Disable legacy (protocol version 1) support in the server for new
 # installations. In future the default will change to require explicit
@@ -38,8 +28,8 @@ HostKey /etc/ssh/ssh_host_rsa_key
 #HostKey /etc/ssh/ssh_host_dsa_key
 
 # Lifetime and size of ephemeral version 1 server key
-#KeyRegenerationInterval 1h
-#ServerKeyBits 1024
+KeyRegenerationInterval <%= @key_regeneration_interval %>
+ServerKeyBits <%= @server_key_bits %>
 
 # Logging
 # obsoletes QuietMode and FascistLogging
@@ -47,37 +37,40 @@ SyslogFacility <%= @syslogfacility %>
 LogLevel <%= @log_level %>
 
 # Authentication:
-
-<% if defined?(@logingracetime) -%>
 LoginGraceTime <%= @logingracetime %>
-<% end -%>
 PermitRootLogin <%= @permitrootlogin %>
-#StrictModes yes
+StrictModes <%= scope.function_bool2yesno([@strict_modes]) %>
 MaxAuthTries <%= @maxauthtries %>
-#MaxSessions 10
+MaxSessions <%= @max_sessions %>
+MaxStartups <%= @max_startups_start %>:<%= @max_startups_rate %>:<%= @max_startups_full %>
+RSAAuthentication <%= scope.function_bool2yesno([@rsa_authentication]) %>
+PubkeyAuthentication <%= scope.function_bool2yesno([@pubkey_authentication]) %>
 
-#RSAAuthentication yes
-#PubkeyAuthentication yes
 #AuthorizedKeysFile	.ssh/authorized_keys
 #AuthorizedKeysCommand none
 #AuthorizedKeysCommandRunAs nobody
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
 #RhostsRSAAuthentication no
+
 # similar for protocol version 2
 HostbasedAuthentication <%= scope.function_bool2yesno([@hostbased_authentication]) %>
+
 # Change to yes if you don't trust ~/.ssh/known_hosts for
 # RhostsRSAAuthentication and HostbasedAuthentication
 #IgnoreUserKnownHosts no
 # Don't read the user's ~/.rhosts and ~/.shosts files
 IgnoreRhosts <%= scope.function_bool2yesno([@ignore_rhosts]) %>
 
+PermitUserEnvironment <%= scope.function_bool2yesno([@permit_user_environment]) %>
+
 # To disable tunneled clear text passwords, change to no here!
 PasswordAuthentication <%= scope.function_bool2yesno([@passwordauth]) %>
 PermitEmptyPasswords <%= scope.function_bool2yesno([@permitemptypasswords]) %>
 
+
 # Change to no to disable s/key passwords
-ChallengeResponseAuthentication no
+ChallengeResponseAuthentication <%= scope.function_bool2yesno([@challenge_response_authentication]) %>
 
 # Kerberos options
 #KerberosAuthentication no
@@ -115,20 +108,23 @@ AcceptEnv XMODIFIERS
 X11Forwarding <%= scope.function_bool2yesno([@x11forwarding]) %>
 #X11DisplayOffset 10
 X11UseLocalhost <%= scope.function_bool2yesno([@x11uselocalhost]) %>
-#PrintMotd yes
+PrintMotd  <%= scope.function_bool2yesno([@print_motd]) %>
 #PrintLastLog yes
-#TCPKeepAlive yes
+
+TCPKeepAlive yes
+ClientAliveCountMax <%= @clientalivecountmax %>
+ClientAliveInterval <%= @clientaliveinterval %>
+
+
 #UseLogin no
 #UsePrivilegeSeparation yes
-PermitUserEnvironment <%= scope.function_bool2yesno([@permit_user_environment]) %>
 #Compression delayed
-ClientAliveInterval <%= @clientaliveinterval %>
-ClientAliveCountMax <%= @clientalivecountmax %>
 #ShowPatchLevel no
 UseDNS <%= scope.function_bool2yesno([@usedns]) %>
 #PidFile /var/run/sshd.pid
-#MaxStartups 10:30:100
-#PermitTunnel no
+
+PermitTunnel no
+
 #ChrootDirectory none
 
 <% if defined?(@banner) -%>

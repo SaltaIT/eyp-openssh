@@ -7,8 +7,6 @@ class openssh::params {
   $clientaliveinterval_default='300'
   $clientalivecountmax_default='5'
 
-  $logingracetime_default = '60'
-
   if(hiera('eypopensshserver::hardening', false))
   {
     $sshd_ciphers_default = [ 'aes256-ctr', 'aes192-ctr', 'aes128-ctr' ]
