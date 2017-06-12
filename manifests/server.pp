@@ -55,6 +55,8 @@ class openssh::server (
                         $pubkey_authentication             = true,
                         $challenge_response_authentication = false,
                         $print_motd                        = true,
+                        $kerberos_authentication           = false,
+                        $print_last_log                    = true,
                       )inherits openssh::params {
 
   if($ciphers!=undef)

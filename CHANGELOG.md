@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.35
+
+* added more sshd variables:
+  * kerberos_authentication
+  * print_last_log
+
 ## 0.1.34
 
 * added more sshd variables:

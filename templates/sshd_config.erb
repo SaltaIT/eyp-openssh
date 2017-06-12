@@ -73,7 +73,7 @@ PermitEmptyPasswords <%= scope.function_bool2yesno([@permitemptypasswords]) %>
 ChallengeResponseAuthentication <%= scope.function_bool2yesno([@challenge_response_authentication]) %>
 
 # Kerberos options
-#KerberosAuthentication no
+KerberosAuthentication <%= scope.function_bool2yesno([@kerberos_authentication]) %>
 #KerberosOrLocalPasswd yes
 #KerberosTicketCleanup yes
 #KerberosGetAFSToken no
@@ -109,7 +109,7 @@ X11Forwarding <%= scope.function_bool2yesno([@x11forwarding]) %>
 #X11DisplayOffset 10
 X11UseLocalhost <%= scope.function_bool2yesno([@x11uselocalhost]) %>
 PrintMotd  <%= scope.function_bool2yesno([@print_motd]) %>
-#PrintLastLog yes
+PrintLastLog <%= scope.function_bool2yesno([@print_last_log]) %>
 
 TCPKeepAlive yes
 ClientAliveCountMax <%= @clientalivecountmax %>
