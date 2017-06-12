@@ -5,6 +5,7 @@
 * added more sshd variables:
   * kerberos_authentication
   * print_last_log
+* added variable to be able to set mode for ssh server key files, default to undef
 
 ## 0.1.34
 
