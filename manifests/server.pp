@@ -161,7 +161,7 @@ class openssh::server (
   {
     file { $ssh_server_keys_filenames:
       ensure => 'present',
-      mode => $ssh_server_keys_mode,
+      mode   => $ssh_server_keys_mode,
     }
   }
 
