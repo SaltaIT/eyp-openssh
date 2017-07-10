@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.36
+
+* added user/group access control:
+  * deny_users
+  * deny_groups
+  * allow_users
+  * allow_groups
+
 ## 0.1.35
 
 * added more sshd variables:

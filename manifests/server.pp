@@ -63,6 +63,10 @@ class openssh::server (
                                                               '/etc/ssh/ssh_host_ed25519_key',
                                                               '/etc/ssh/ssh_host_rsa_key'
                                                               ],
+                        $deny_users                        = [],
+                        $deny_groups                       = [],
+                        $allow_users                       = [],
+                        $allow_groups                      = [],
                       )inherits openssh::params {
 
   if($ciphers!=undef)

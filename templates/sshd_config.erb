@@ -148,3 +148,16 @@ AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper
 AuthorizedKeysCommandRunAs sshd
 PubkeyAuthentication yes
 <% end -%>
+
+<% if @deny_users.any? -%>
+DenyUsers <%= @deny_users.join(' ') %>
+<% end -%>
+<% if @deny_groups.any? -%>
+DenyGroups <%= @deny_groups.join(' ') %>
+<% end -%>
+<% if @allow_users.any? -%>
+AllowUsers <%= @allow_users.join(' ') %>
+<% end -%>
+<% if @allow_groups.any? -%>
+AllowGroups <%= @allow_groups.join(' ') %>
+<% end -%>
