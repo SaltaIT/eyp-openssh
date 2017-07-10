@@ -5,7 +5,7 @@
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-openssh",
-  "project_page": null,
+  "project_page": "https://github.com/NTTCom-MS/eyp-openssh",
   "issues_url": "https://github.com/NTTCom-MS/eyp-openssh/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0 < 9.9.9"},
