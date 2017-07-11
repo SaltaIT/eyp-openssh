@@ -1,3 +1,4 @@
+# puppet2sitepp @sshmatch
 define openssh::match (
                         $groups                  = undef,
                         $users                   = undef,

@@ -1,3 +1,4 @@
+# puppet2sitepp @sshprivkeys
 define openssh::privkey(
                             $user       = $name,
                             $group      = $name,

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.37
+
+* **INCOMPATIBLE CHANGE** dropped defines:
+  * **openssh::denyuser**
+  * **openssh::allowuser**
+
 ## 0.1.36
 
 * added user/group access control:
