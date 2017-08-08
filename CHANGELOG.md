@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.39
+
+* bugfix **authorized_keys_command** in **CentOS 7**
+
 ## 0.1.38
 
 * added **authorized_keys_command** variable

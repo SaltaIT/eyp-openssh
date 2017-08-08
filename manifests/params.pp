@@ -53,6 +53,7 @@ class openssh::params {
               # * hmac-sha2-256,
               # * hmac-sha2-512,
               # hmac-ripemd160@openssh.com
+              $sshd_authorized_keys_command_user_default=undef
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -91,6 +92,7 @@ class openssh::params {
               # hmac-ripemd160,
               # hmac-sha1-96,
               # hmac-md5-96
+              $sshd_authorized_keys_command_user_default='root'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -129,6 +131,8 @@ class openssh::params {
 
               # hmac-sha2-256,hmac-sha2-512,hmac-sha1
 
+              $sshd_authorized_keys_command_user_default=undef
+
               if(hiera('eypopensshserver::hardening', false))
               {
                 $sshd_macs_default = [
@@ -155,6 +159,8 @@ class openssh::params {
               # hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,
               # hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,
               # hmac-sha1-96,hmac-md5-96
+
+              $sshd_authorized_keys_command_user_default='root'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -199,6 +205,8 @@ class openssh::params {
           {
             /^1[46].*$/:
             {
+
+              $sshd_authorized_keys_command_user_default='root'
 
               if(hiera('eypopensshserver::hardening', false))
               {
