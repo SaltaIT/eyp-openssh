@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.38
+
+* added **authorized_keys_command** variable
+
 ## 0.1.37
 
 * **INCOMPATIBLE CHANGE** dropped defines:

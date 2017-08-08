@@ -67,6 +67,7 @@ class openssh::server (
                         $deny_groups                       = [],
                         $allow_users                       = [],
                         $allow_groups                      = [],
+                        $authorized_keys_command           = undef,
                       )inherits openssh::params {
 
   if($ciphers!=undef)

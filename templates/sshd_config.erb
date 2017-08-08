@@ -47,7 +47,11 @@ RSAAuthentication <%= scope.function_bool2yesno([@rsa_authentication]) %>
 PubkeyAuthentication <%= scope.function_bool2yesno([@pubkey_authentication]) %>
 
 #AuthorizedKeysFile	.ssh/authorized_keys
+<% if defined?(@authorized_keys_command) -%>
+AuthorizedKeysCommand <%= @authorized_keys_command %>
+<% else -%>
 #AuthorizedKeysCommand none
+<% end -%>
 #AuthorizedKeysCommandRunAs nobody
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
