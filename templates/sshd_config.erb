@@ -49,11 +49,11 @@ PubkeyAuthentication <%= scope.function_bool2yesno([@pubkey_authentication]) %>
 #AuthorizedKeysFile	.ssh/authorized_keys
 <% if defined?(@authorized_keys_command) -%>
 AuthorizedKeysCommand <%= @authorized_keys_command %>
+  <%- if defined?(@authorized_keys_command_user) -%>
+AuthorizedKeysCommandUser <%= @authorized_keys_command_user %>
+  <%- end -%>
 <% else -%>
 #AuthorizedKeysCommand none
-<% end -%>
-<% if defined?(@authorized_keys_command_user) -%>
-AuthorizedKeysCommandUser <%= @authorized_keys_command_user %>
 <% end -%>
 #AuthorizedKeysCommandRunAs nobody
 
