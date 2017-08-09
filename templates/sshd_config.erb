@@ -50,12 +50,12 @@ PubkeyAuthentication <%= scope.function_bool2yesno([@pubkey_authentication]) %>
 <% if defined?(@authorized_keys_command) -%>
 AuthorizedKeysCommand <%= @authorized_keys_command %>
   <%- if defined?(@authorized_keys_command_user) -%>
-AuthorizedKeysCommandUser <%= @authorized_keys_command_user %>
+<%= scope.lookupvar('openssh::params::sshd_authorized_keys_command_user_directive') %> <%= @authorized_keys_command_user %>
   <%- end -%>
 <% else -%>
 #AuthorizedKeysCommand none
 <% end -%>
-#AuthorizedKeysCommandRunAs nobody
+
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
 #RhostsRSAAuthentication no

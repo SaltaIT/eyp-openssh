@@ -54,6 +54,7 @@ class openssh::params {
               # * hmac-sha2-512,
               # hmac-ripemd160@openssh.com
               $sshd_authorized_keys_command_user_default=undef
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandRunAs'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -93,6 +94,7 @@ class openssh::params {
               # hmac-sha1-96,
               # hmac-md5-96
               $sshd_authorized_keys_command_user_default='root'
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -132,6 +134,7 @@ class openssh::params {
               # hmac-sha2-256,hmac-sha2-512,hmac-sha1
 
               $sshd_authorized_keys_command_user_default=undef
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandRunAs'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -161,6 +164,7 @@ class openssh::params {
               # hmac-sha1-96,hmac-md5-96
 
               $sshd_authorized_keys_command_user_default='root'
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
 
               if(hiera('eypopensshserver::hardening', false))
               {
@@ -207,6 +211,7 @@ class openssh::params {
             {
 
               $sshd_authorized_keys_command_user_default='root'
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
 
               if(hiera('eypopensshserver::hardening', false))
               {
