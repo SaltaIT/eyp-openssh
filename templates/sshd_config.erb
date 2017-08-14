@@ -54,6 +54,7 @@ AuthorizedKeysCommand <%= @authorized_keys_command %>
   <%- end -%>
 <% else -%>
 #AuthorizedKeysCommand none
+#<%= scope.lookupvar('openssh::params::sshd_authorized_keys_command_user_directive') %>
 <% end -%>
 
 
