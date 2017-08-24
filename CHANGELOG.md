@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.42
+
+* added **allow_tcp_forwarding** to **openssh::server**
+
 ## 0.1.41
 
 * added automatic directive selection (**AuthorizedKeysCommandUser**/**AuthorizedKeysCommandRunAs**) for **CentOS 6/7**

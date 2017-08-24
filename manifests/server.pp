@@ -69,6 +69,7 @@ class openssh::server (
                         $allow_groups                      = [],
                         $authorized_keys_command           = undef,
                         $authorized_keys_command_user      = $openssh::params::sshd_authorized_keys_command_user_default,
+                        $allow_tcp_forwarding              = true,
                       )inherits openssh::params {
 
   if($ciphers!=undef)
