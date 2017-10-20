@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.43
+
+* added **key_source** to **openssh::privkey**
+
 ## 0.1.42
 
 * added **allow_tcp_forwarding** to **openssh::server**
