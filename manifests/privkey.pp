@@ -56,7 +56,7 @@ define openssh::privkey(
 
     exec { "get public key ${user} ${homedir} ${type}":
       command => "ssh-keygen -y -f ${homedir}/.ssh/id_${type} > ${homedir}/.ssh/id_${type}.pub",
-      unless  => "bash -c '(ssh-keygen -y -f ${homedir}/.ssh/id_${type} | md5sum | awk '{ print \$1 }'; cat ${homedir}/.ssh/id_${type}.pub | md5sum | awk '{ print \$1 }') | uniq | wc -l | grep 1'";
+      unless  => "bash -c '(ssh-keygen -y -f ${homedir}/.ssh/id_${type} | md5sum | awk \"{ print \\\$1 }\"; cat ${homedir}/.ssh/id_${type}.pub | md5sum | awk \"{ print \\\$1 }\") | uniq | wc -l | grep 1'";
     }
 
     file { "${homedir}/.ssh/id_${type}.pub":
