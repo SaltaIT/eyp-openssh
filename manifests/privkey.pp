@@ -8,7 +8,6 @@ define openssh::privkey(
                             $passphrase = '',
                             $key_source = undef,
                           ) {
-
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
