@@ -1,3 +1,14 @@
+#
+# user's private keys management
+#
+# @param ensure Whether this private key is present or not
+# @param user owner of the private key
+# @param group group of the private key
+# @param homedir where to store the private key
+# @param type private key type
+# @param passphrase Passphrase for the private key
+# @param key_source If set, does not generate a new private key, just copies it ignoring
+#
 # puppet2sitepp @sshprivkeys
 define openssh::privkey(
                             $user       = $name,
