@@ -1,5 +1,14 @@
 #
-class openssh::client($gssapi_authentication = true) inherits openssh::params {
+class openssh::client (
+                        $gssapi_authentication = true,
+                        $send_env              = [
+                         'LANG', 'LC_CTYPE', 'LC_NUMERIC', 'LC_TIME', 'LC_COLLATE',
+                         'LC_MONETARY', 'LC_MESSAGES', 'LC_PAPER', 'LC_NAME',
+                         'LC_ADDRESS', 'LC_TELEPHONE', 'LC_MEASUREMENTLC_IDENTIFICATION',
+                         'LC_ALL', 'LANGUAGE', 'XMODIFIERS',
+                        ],
+                        $forward_x11_trusted   = true,
+                      ) inherits openssh::params {
 
   if($openssh::params::package_ssh_client!=undef)
   {
@@ -26,7 +35,7 @@ class openssh::client($gssapi_authentication = true) inherits openssh::params {
   concat::fragment { "${openssh::params::ssh_config} base conf":
     target  => $openssh::params::ssh_config,
     order   => '00',
-    content => template("${module_name}/ssh_config.erb"),
+    content => template("${module_name}/ssh_config/ssh_config.erb"),
   }
 
 }

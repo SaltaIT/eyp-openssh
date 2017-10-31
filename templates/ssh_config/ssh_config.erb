@@ -1,0 +1,14 @@
+#
+# puppet managed file
+#
+
+# This is the ssh client system-wide configuration file.  See
+# ssh_config(5) for more information.  This file provides defaults for
+# users, and the values can be changed in per-user configuration files
+# or on the command line.
+
+
+Host *
+  GSSAPIAuthentication <%= scope.function_bool2yesno([@gssapi_authentication]) %>
+  ForwardX11Trusted <%= scope.function_bool2yesno([@forward_x11_trusted]) %>
+  SendEnv <%= @send_env.join(' ') %>
