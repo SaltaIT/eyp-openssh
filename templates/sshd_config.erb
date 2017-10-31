@@ -144,13 +144,6 @@ Banner none
 # override default of no subsystems
 Subsystem	sftp	<%= @sftp_command %>
 
-# Example of overriding settings on a per-user basis
-#Match User anoncvs
-#	X11Forwarding no
-#	AllowTcpForwarding no
-#	ForceCommand cvs server
-
-
 <% if @enableldapsshkeys -%>
 AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper
 AuthorizedKeysCommandRunAs sshd
