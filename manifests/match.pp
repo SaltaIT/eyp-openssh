@@ -9,6 +9,7 @@ define openssh::match (
                         $allow_tcp_forwarding    = undef,
                         $allowed_ips             = undef,
                         $password_authentication = undef,
+                        $description             = undef,
                       ) {
   #
   if($groups!=undef)

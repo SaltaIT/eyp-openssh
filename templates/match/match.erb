@@ -1,4 +1,10 @@
 
+<% if defined?(@description) -%>
+#
+# <%= @description %>
+#
+
+<% end -%>
 Match <%= -%>
 <%- if defined?(@groups) -%> group <%= @groups.join(',') %> <% end -%>
 <%- if defined?(@users) -%> user <%= @users.join(',') %> <% end -%>
