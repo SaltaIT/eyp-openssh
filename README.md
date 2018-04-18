@@ -1,14 +1,11 @@
 # openssh
 
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-
 #### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description](#module-description)
 3. [Setup](#setup)
     * [What postgresql affects](#what-postgresql-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with postgresql](#beginning-with-postgresql)
 4. [Usage](#usage)
 5. [Reference](#reference)
@@ -36,11 +33,6 @@ Manages:
 * packages:
   * client package (if not included in server package)
   * server package
-
-
-### Setup Requirements
-
-This module requires pluginsync enabled
 
 ### Beginning with openssh
 
@@ -204,6 +196,7 @@ Tested on:
 * CentOS 6
 * CentOS 7
 * Ubuntu 14.04
+* Ubuntu 16.04
 * SLES 11 SP3
 
 ## Development
@@ -215,7 +208,6 @@ have some tests to check both presence and absence of any feature
 
 * Move openssh::server configuration options to the **openssh::server** namespace, for example:
   * **openssh::denyuser** -> **openssh::server::denyuser**
-* Implement **openssh::client::host** using concat { $openssh::params::ssh_config: }
 
 ### Contributing
 
