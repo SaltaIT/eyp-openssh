@@ -32,6 +32,8 @@ class openssh::params {
 
       $syslogfacility_default='AUTHPRIV'
 
+      $supports_first_ssh_protocol=true
+
       case $::operatingsystem
       {
         'RedHat':
@@ -205,29 +207,34 @@ class openssh::params {
       {
         'Ubuntu':
         {
+          $sshd_authorized_keys_command_user_default='root'
+          $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
+
+          if(hiera('eypopensshserver::hardening', false))
+          {
+            $sshd_macs_default = [
+              'hmac-sha2-512-etm@openssh.com',
+              'hmac-sha2-256-etm@openssh.com',
+              'umac-128-etm@openssh.com',
+              'hmac-sha2-512',
+              'hmac-sha2-256',
+              'umac-128@openssh.com',
+            ]
+          }
+          else
+          {
+            $sshd_macs_default = undef
+          }
+
           case $::operatingsystemrelease
           {
-            /^1[468].*$/:
+            /^1[46].*$/:
             {
-
-              $sshd_authorized_keys_command_user_default='root'
-              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
-
-              if(hiera('eypopensshserver::hardening', false))
-              {
-                $sshd_macs_default = [
-                  'hmac-sha2-512-etm@openssh.com',
-                  'hmac-sha2-256-etm@openssh.com',
-                  'umac-128-etm@openssh.com',
-                  'hmac-sha2-512',
-                  'hmac-sha2-256',
-                  'umac-128@openssh.com',
-                ]
-              }
-              else
-              {
-                $sshd_macs_default = undef
-              }
+              $supports_first_ssh_protocol=true
+            }
+            /^18.*$/:
+            {
+              $supports_first_ssh_protocol=false
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
@@ -239,6 +246,7 @@ class openssh::params {
     'Suse':
     {
       $package_sshd='openssh'
+      $supports_first_ssh_protocol=true
 
       case $::operatingsystem
       {
