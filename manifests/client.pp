@@ -1,13 +1,13 @@
 #
 class openssh::client (
                         $gssapi_authentication = true,
-                        $send_env              = [
-                          'LANG', 'LC_CTYPE', 'LC_NUMERIC', 'LC_TIME', 'LC_COLLATE',
-                          'LC_MONETARY', 'LC_MESSAGES', 'LC_PAPER', 'LC_NAME',
-                          'LC_ADDRESS', 'LC_TELEPHONE', 'LC_MEASUREMENTLC_IDENTIFICATION',
-                          'LC_ALL', 'LANGUAGE', 'XMODIFIERS',
-                        ],
                         $forward_x11_trusted   = true,
+                        $send_env              = [
+                                                  'LANG', 'LC_CTYPE', 'LC_NUMERIC', 'LC_TIME', 'LC_COLLATE',
+                                                  'LC_MONETARY', 'LC_MESSAGES', 'LC_PAPER', 'LC_NAME',
+                                                  'LC_ADDRESS', 'LC_TELEPHONE', 'LC_MEASUREMENTLC_IDENTIFICATION',
+                                                  'LC_ALL', 'LANGUAGE', 'XMODIFIERS',
+                                                ],
                       ) inherits openssh::params {
 
   if($openssh::params::package_ssh_client!=undef)
