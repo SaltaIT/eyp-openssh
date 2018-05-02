@@ -8,11 +8,11 @@ describe 'openssh class' do
     it 'should work with no errors' do
       pp = <<-EOF
 
-      class { 'openssh':
-      }
+      class { 'openssh': }
 
-      class { 'openssh::server':
-      }
+      class { 'openssh::server': }
+
+      class { 'openssh::client': }
 
       EOF
 
