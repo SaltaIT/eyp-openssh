@@ -27,7 +27,7 @@ MACs <%= @macs.join(',') %>
 HostKey /etc/ssh/ssh_host_rsa_key
 #HostKey /etc/ssh/ssh_host_dsa_key
 
-<% if scope.lookupvar('openssh::params::has_first_ssh_protocol') -%>
+<% if scope.lookupvar('openssh::params::supports_first_ssh_protocol') -%>
 # Lifetime and size of ephemeral version 1 server key
 KeyRegenerationInterval <%= @key_regeneration_interval %>
 ServerKeyBits <%= @server_key_bits %>
@@ -45,7 +45,7 @@ StrictModes <%= scope.function_bool2yesno([@strict_modes]) %>
 MaxAuthTries <%= @maxauthtries %>
 MaxSessions <%= @max_sessions %>
 MaxStartups <%= @max_startups_start %>:<%= @max_startups_rate %>:<%= @max_startups_full %>
-<% if scope.lookupvar('openssh::params::has_first_ssh_protocol') -%>
+<% if scope.lookupvar('openssh::params::supports_first_ssh_protocol') -%>
 RSAAuthentication <%= scope.function_bool2yesno([@rsa_authentication]) %>
 <% end -%>
 PubkeyAuthentication <%= scope.function_bool2yesno([@pubkey_authentication]) %>
