@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.45
+
+* added Ubuntu 18.04 support
+
 ## 0.1.44
 
 * added **openssh::client::host** defined to configure host based openssh client options

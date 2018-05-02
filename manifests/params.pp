@@ -207,7 +207,7 @@ class openssh::params {
         {
           case $::operatingsystemrelease
           {
-            /^1[46].*$/:
+            /^1[468].*$/:
             {
 
               $sshd_authorized_keys_command_user_default='root'
