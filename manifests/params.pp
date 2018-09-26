@@ -254,7 +254,7 @@ class openssh::params {
         {
           case $::operatingsystemrelease
           {
-            '11.3':
+            /^1[12].3$/:
             {
               $sftp_server='/usr/lib/ssh/sftp-server'
               $package_sftp=undef
