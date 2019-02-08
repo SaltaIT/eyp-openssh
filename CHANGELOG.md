@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.47
+
+* added SLES 12.4 support
+
 ## 0.1.46
 
 * added SLES 12.3 support
