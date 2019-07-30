@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.48
+
+* added **banner** option to **openssh::match**
+
 ## 0.1.47
 
 * added SLES 12.4 support

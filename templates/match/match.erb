@@ -19,6 +19,9 @@ Match <%= -%>
   <%- if defined?(@forcecommand) -%>
   ForceCommand <%= @forcecommand %>
   <%- end -%>
+  <%- if defined?(@banner) -%>
+  Banner <%= @banner %>
+  <%- end -%>
   <%- if defined?(@allow_tcp_forwarding) -%>
   AllowTcpForwarding <%= scope.function_bool2yesno([@allow_tcp_forwarding]) %>
   <%- end -%>
