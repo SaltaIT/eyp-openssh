@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.49
+
+* added **RHEL 8** support
+
 ## 0.1.48
 
 * added **banner** option to **openssh::match**

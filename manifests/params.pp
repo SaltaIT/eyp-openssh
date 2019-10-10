@@ -71,9 +71,6 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
-
-
-              # -_(._.)_-
             }
             /^7.*$/:
             {
@@ -116,6 +113,14 @@ class openssh::params {
                 $sshd_macs_default = undef
               }
             }
+            /^8.*$/:
+            {
+              $sshd_authorized_keys_command_user_default='root'
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
+
+              # CIS does not define specific macs to be set
+              $sshd_macs_default = undef
+            }
             default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
           }
         }
@@ -153,9 +158,6 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
-
-
-              # -_(._.)_-
             }
             /^7.*$/:
             {
@@ -188,7 +190,14 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
+            }
+            /^8.*$/:
+            {
+              $sshd_authorized_keys_command_user_default='root'
+              $sshd_authorized_keys_command_user_directive='AuthorizedKeysCommandUser'
 
+              # CIS does not define specific macs to be set
+              $sshd_macs_default = undef
             }
             default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
           }
