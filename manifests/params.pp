@@ -31,8 +31,6 @@ class openssh::params {
 
       $syslogfacility_default='AUTHPRIV'
 
-      $supports_first_ssh_protocol=true
-
       case $::operatingsystem
       {
         #
@@ -72,6 +70,7 @@ class openssh::params {
               }
 
               $sshd_global_config = undef
+              $supports_first_ssh_protocol=true
             }
             /^7.*$/:
             {
@@ -115,6 +114,7 @@ class openssh::params {
               }
 
               $sshd_global_config = undef
+              $supports_first_ssh_protocol=true
             }
             /^8.*$/:
             {
@@ -125,6 +125,7 @@ class openssh::params {
               $sshd_macs_default = undef
 
               $sshd_global_config = '/etc/sysconfig/sshd'
+              $supports_first_ssh_protocol=false
             }
             default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
           }
@@ -165,6 +166,7 @@ class openssh::params {
               }
 
               $sshd_global_config = undef
+              $supports_first_ssh_protocol=true
             }
             /^7.*$/:
             {
@@ -199,6 +201,7 @@ class openssh::params {
               }
 
               $sshd_global_config = undef
+              $supports_first_ssh_protocol=true
             }
             /^8.*$/:
             {
@@ -209,6 +212,7 @@ class openssh::params {
               $sshd_macs_default = undef
 
               $sshd_global_config = '/etc/sysconfig/sshd'
+              $supports_first_ssh_protocol=false
             }
             default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
           }
