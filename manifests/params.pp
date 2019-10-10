@@ -36,9 +36,11 @@ class openssh::params {
 
       case $::operatingsystem
       {
+        #
+        # RHEL
+        #
         'RedHat':
         {
-
           case $::operatingsystemrelease
           {
             /^[56].*$/:
@@ -117,6 +119,9 @@ class openssh::params {
             default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
           }
         }
+        #
+        # CentOS base OS
+        #
         default:
         {
           case $::operatingsystemrelease
