@@ -139,6 +139,7 @@ class openssh::server (
                     $require_packages,
                 ],
       notify  => Class['openssh::service'],
+      content => "#\n",
     }
   }
 
@@ -152,7 +153,6 @@ class openssh::server (
                   $require_packages,
               ],
     notify  => Class['openssh::service'],
-    content => "#\n",
   }
 
   concat::fragment { "${openssh::params::sshd_config} base conf":
