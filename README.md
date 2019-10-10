@@ -30,6 +30,7 @@ Manages:
 * files:
   * **/etc/ssh/sshd_config**
   * **/etc/ssh/ssh_config**
+  * On **RHEL 8** file **/etc/sysconfig/sshd** is also managed
 * packages:
   * client package (if not included in server package)
   * server package
