@@ -16,7 +16,6 @@ class openssh::params {
     $sshd_ciphers_default = undef
   }
 
-
   case $::osfamily
   {
     'redhat':
