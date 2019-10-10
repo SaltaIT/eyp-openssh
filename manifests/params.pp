@@ -70,6 +70,8 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
+
+              $sshd_global_config = undef
             }
             /^7.*$/:
             {
@@ -111,6 +113,8 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
+
+              $sshd_global_config = undef
             }
             /^8.*$/:
             {
@@ -119,6 +123,8 @@ class openssh::params {
 
               # CIS does not define specific macs to be set
               $sshd_macs_default = undef
+
+              $sshd_global_config = '/etc/sysconfig/sshd'
             }
             default: { fail("Unsupported RHEL version! - ${::operatingsystemrelease}")  }
           }
@@ -157,6 +163,8 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
+
+              $sshd_global_config = undef
             }
             /^7.*$/:
             {
@@ -189,6 +197,8 @@ class openssh::params {
               {
                 $sshd_macs_default = undef
               }
+
+              $sshd_global_config = undef
             }
             /^8.*$/:
             {
@@ -197,6 +207,8 @@ class openssh::params {
 
               # CIS does not define specific macs to be set
               $sshd_macs_default = undef
+
+              $sshd_global_config = '/etc/sysconfig/sshd'
             }
             default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
           }
@@ -215,6 +227,8 @@ class openssh::params {
       $package_ssh_client='openssh-client'
 
       $syslogfacility_default='AUTH'
+
+      $sshd_global_config = undef
 
       case $::operatingsystem
       {
@@ -260,6 +274,8 @@ class openssh::params {
     {
       $package_sshd='openssh'
       $supports_first_ssh_protocol=true
+
+      $sshd_global_config = undef
 
       case $::operatingsystem
       {
