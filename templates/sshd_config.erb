@@ -3,7 +3,13 @@
 #
 
 # Network options
+<% if @port.kind_of?(Array) -%>
+  <%- @port.each do |val| -%>
+Port <%= val %>
+  <%- end -%>
+<% else -%>
 Port <%= @port %>
+<% end -%>
 AddressFamily <%= @address_family %>
 <% @listen_address.each do |val| -%>
 ListenAddress <%= val %>

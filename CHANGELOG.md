@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.50
+
+* allow multiple listening ports
+
 ## 0.1.49
 
 * added **RHEL 8** support
