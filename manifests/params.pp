@@ -16,6 +16,37 @@ class openssh::params {
     $sshd_ciphers_default = undef
   }
 
+    # CentOS 6
+    #  KexAlgorithms
+    #          Specifies the available KEX (Key Exchange) algorithms.  Multiple algorithms must be comma-separated.  The default is
+    #          diffie-hellman-group-exchange-sha256
+    #          diffie-hellman-group-exchange-sha1
+    #          diffie-hellman-group14-sha1
+    #          diffie-hellman-group1-sha1
+
+
+    # Ubuntu 14.04
+    #  KexAlgorithms
+    #          Specifies the available KEX (Key Exchange) algorithms.  Multiple algorithms must be comma-separated.  The default is
+
+    #                curve25519-sha256@libssh.org
+    #                ecdh-sha2-nistp256
+    #                ecdh-sha2-nistp384
+    #                ecdh-sha2-nistp521
+    #                diffie-hellman-group-exchange-sha256
+    #                diffie-hellman-group-exchange-sha1
+    #                diffie-hellman-group14-sha1
+    #                diffie-hellman-group1-sha1
+
+  if(hiera('eypopensshserver::hardening', false))
+  {
+    $sshd_kex_algorithms = [ 'diffie-hellman-group-exchange-sha256', 'aes192-ctr', 'aes128-ctr' ]
+  }
+  else
+  {
+    $sshd_kex_algorithms = []
+  }
+
   case $::osfamily
   {
     'redhat':

@@ -27,6 +27,10 @@ Ciphers <%= @ciphers.join(',') %>
 MACs <%= @macs.join(',') %>
 <% end -%>
 
+<% if @kex_algorithms.any? -%>
+ <%= @kex_algorithms.join(',') %>
+<% end -%>
+
 # HostKey for protocol version 1
 #HostKey /etc/ssh/ssh_host_key
 # HostKeys for protocol version 2
