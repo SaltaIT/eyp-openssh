@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.52
+
+* fixed bug for KexAlgorithms
+
 ## 0.1.51
 
 * added support for KexAlgorithms with hardened option
