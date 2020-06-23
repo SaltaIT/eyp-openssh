@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.52
+## 0.1.53
 
 * fixed bug for KexAlgorithms
 
