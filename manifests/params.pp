@@ -40,7 +40,7 @@ class openssh::params {
 
   if(hiera('eypopensshserver::hardening', false))
   {
-    $sshd_kex_algorithms = [ 'diffie-hellman-group-exchange-sha256', 'aes192-ctr', 'aes128-ctr' ]
+    $sshd_kex_algorithms = [ 'diffie-hellman-group-exchange-sha256' ]
   }
   else
   {
