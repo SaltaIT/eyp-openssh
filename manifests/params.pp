@@ -298,6 +298,10 @@ class openssh::params {
             {
               $supports_first_ssh_protocol=false
             }
+            /^20.*$/:
+            {
+              $supports_first_ssh_protocol=false
+            }            
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }

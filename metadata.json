@@ -1,6 +1,6 @@
 {
   "name": "eyp-openssh",
-  "version": "0.1.53",
+  "version": "0.1.54",
   "author": "eyp",
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
@@ -35,7 +35,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04", "16.04", "18.04" ]
+      "operatingsystemrelease": [ "14.04", "16.04", "18.04", "20.04" ]
     },
     {
       "operatingsystem": "SLES",

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.54
+
+* added support fro **Ubuntu 20.04**
+
 ## 0.1.53
 
 * fixed bug for KexAlgorithms
