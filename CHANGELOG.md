@@ -1,9 +1,20 @@
 # CHANGELOG
 
-## 0.1.51
+## 0.1.55
 
 * added variable GatewayPorts
-* added support for **Ubuntu 20.04**
+
+## 0.1.54
+
+* added support fro **Ubuntu 20.04**
+
+## 0.1.53
+
+* fixed bug for KexAlgorithms
+
+## 0.1.51
+
+* added support for KexAlgorithms with hardened option
 
 ## 0.1.50
 
@@ -19,15 +30,15 @@
 
 ## 0.1.47
 
-* added SLES 12.4 support
+* added **SLES 12.4** support
 
 ## 0.1.46
 
-* added SLES 12.3 support
+* added **SLES 12.3** support
 
 ## 0.1.45
 
-* added Ubuntu 18.04 support
+* added **Ubuntu 18.04** support
 
 ## 0.1.44
 
@@ -58,9 +69,11 @@
 
 ## 0.1.37
 
-* **INCOMPATIBLE CHANGE** dropped defines:
-  * **openssh::denyuser**
-  * **openssh::allowuser**
+* **INCOMPATIBLE CHANGE** dropped **openssh::denyuser** and **openssh::allowuser** defines, please use the appropriate options in **openssh::server**:
+  * deny_users
+  * deny_groups
+  * allow_users
+  * allow_groups
 
 ## 0.1.36
 
