@@ -70,6 +70,7 @@ class openssh::server (
                         $authorized_keys_command           = undef,
                         $authorized_keys_command_user      = $openssh::params::sshd_authorized_keys_command_user_default,
                         $allow_tcp_forwarding              = true,
+                        $gateway_ports                     = false,
                       )inherits openssh::params {
 
   if($ciphers!=undef)

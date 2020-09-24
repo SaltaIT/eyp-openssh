@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.51
+
+* added variable GatewayPorts
+* added support for **Ubuntu 20.04**
+
 ## 0.1.50
 
 * allow multiple listening ports

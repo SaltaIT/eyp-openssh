@@ -122,7 +122,7 @@ AcceptEnv XMODIFIERS
 
 #AllowAgentForwarding yes
 AllowTcpForwarding <%= scope.function_bool2yesno([@allow_tcp_forwarding]) %>
-#GatewayPorts no
+GatewayPorts <%= scope.function_bool2yesno([@gateway_ports]) %>
 X11Forwarding <%= scope.function_bool2yesno([@x11forwarding]) %>
 #X11DisplayOffset 10
 X11UseLocalhost <%= scope.function_bool2yesno([@x11uselocalhost]) %>
