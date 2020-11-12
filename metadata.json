@@ -4,9 +4,9 @@
   "author": "eyp",
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
-  "source": "https://github.com/NTTCom-MS/eyp-openssh",
-  "project_page": "https://github.com/NTTCom-MS/eyp-openssh",
-  "issues_url": "https://github.com/NTTCom-MS/eyp-openssh/issues",
+  "source": "https://github.com/SaltaIT/eyp-openssh",
+  "project_page": "https://github.com/SaltaIT/eyp-openssh",
+  "issues_url": "https://github.com/SaltaIT/eyp-openssh/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0 < 9.9.9"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
