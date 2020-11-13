@@ -1,7 +1,7 @@
 {
   "name": "eyp-openssh",
   "version": "0.1.55",
-  "author": "eyp",
+  "author": "Jordi Prats",
   "summary": "openssh client and server management",
   "license": "Apache-2.0",
   "source": "https://github.com/SaltaIT/eyp-openssh",
